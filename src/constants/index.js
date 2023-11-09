@@ -15,10 +15,10 @@ import {
     git,
     figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
+    caa,
+    baajj,
+    rh,
+    kartar,
     carrent,
     jobit,
     tripguide,
@@ -42,21 +42,21 @@ import {
   
   const services = [
     {
-      title: "Web Developer",
+      title: "Information Technology Analyst",
+      icon: creator,
+    },
+    {
+      title: "Administrative Assistant",
       icon: web,
     },
     {
-      title: "React Native Developer",
+      title: "Data Analyst",
       icon: mobile,
     },
     {
-      title: "Backend Developer",
+      title: "Shopify Developer",
       icon: backend,
-    },
-    {
-      title: "Content Creator",
-      icon: creator,
-    },
+    }
   ];
   
   const technologies = [
@@ -116,63 +116,67 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
-      iconBg: "#383E56",
-      date: "March 2020 - April 2021",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
+      title: "Information Technology Analyst",
+      company_name: "CAA (The Canadian Automobile Association)",
+      icon: caa,
       iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      date: "Sept 2023 - Dec 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Developed and implemented mathematical algorithms and statistical models as part of the Geo-Temporal Gen 2 project, contributing to data analysis and predictive insights generation.",
+        "Utilized machine-learning algorithms to process and analyze large datasets, enhancing data-driven decision-making and project outcomes.",
+        "Integrated diverse statistical models to facilitate in-depth data analysis, improving the accuracy and relevance of insights derived from complex data sets.",
+        "Collaborated with a team to optimize the performance and accuracy of machine learning algorithms and statistical models, demonstrating strong teamwork and problem-solving skills.",
+        "Performed extensive research on weather API’s",
+        "Proficient in polyline encoding, with expertise in data compression and geographic data representation, particularly in web mapping and navigation systems. Skilled in decoding polyline strings for location-based services and experienced with the Google Maps Polyline Encoding Algorithm. Able to optimize polyline encoding for efficient data transfer and enhance user experience in mobile and web applications.",
       ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      title: "Administrative Assistant",
+      company_name: "RS Khalsa High School",
+      icon: rh,
+      iconBg: "#ffffff",
+      date: "Sept 2021 - Dec 2021",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Provided administrative support, managing calendars, scheduling appointments, and coordinating meetings.",
+        "Managed communication channels, including correspondence, phone calls, emails, by responding to inquiries and routing messages.",
+        "Maintained accurate and up-to-date records and files, ensuring compliance with school policies and procedures.",
+        "Demonstrated strong organizational skills, attention to detail, and the ability to multitask effectively in a fast-paced environment.",
       ],
     },
     {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
+      title: "Data Analyst Intern",
+      company_name: "Kartar Road Lines",
+      icon: kartar,
+      iconBg: "#ffffff",
+      date: "June 2022 - Dec 2022",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Worked with a transportation company that managed import and export of goods in India.",
+        "Automated data collection and organization using Excel and VBA, replacing manual processes.",
+        "Analyzed data patterns and trends, using SQL, to provide insights for informed business decision-making.",
+        "Contributed to improving overall efficiency and accuracy of data management processes.",
       ],
     },
+    {
+      title: "Shopify Developer",
+      company_name: "BAAJJ.com",
+      icon: baajj,
+      iconBg: "#000000",
+      date: "Dec 2022 - Current",
+      points: [
+        "Co-founded and managed a drop-shipping e-commerce enterprise, utilizing third-party apps such as CJ Drop shipping and D-Sers, to simplify the order fulfillment process.",
+        "Developed and implemented custom themes using Shopify's theme templating language, Liquid, along with HTML, CSS, JavaScript, and JSON",
+        "Designed prototypes and front-end of the store with user-friendly interfaces and compelling product descriptions using Figma.",
+        "Implemented and managed various marketing strategies to increase sales and improve customer engagement.",
+        "Utilized data analytics tools (Google Analytics and Facebook Insights) to track website traffic and customer behavior, improving the overall performance of the business.",
+        "Negotiated favorable terms with suppliers, trained team of customer service reps & maintained knowledge of industry trends for continual business improvement.",
+      ],
+    }
   ];
   
   const testimonials = [
     {
       testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
+        "I thought it was impossible to make a website as beautiful as our product, but Kanwal proved me wrong.",
       name: "Sara Lee",
       designation: "CFO",
       company: "Acme Co",
@@ -198,68 +202,45 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Recipe Website",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "A Recipe App built in React, offering intuitive navigation and a user-friendly interface for seamless recipe browsing and management.",
       tags: [
         {
           name: "react",
           color: "blue-text-gradient",
         },
         {
-          name: "mongodb",
+          name: "nodejs",
           color: "green-text-gradient",
         },
         {
-          name: "tailwind",
-          color: "pink-text-gradient",
+          name: "GCP (Firebase)",
+          color: "green-text-gradient",
         },
       ],
-      image: carrent,
-      source_code_link: "https://github.com/",
+      source_code_link: "https://github.com/KanwalBoparai/Recipe-website-2023",
     },
     {
-      name: "Job IT",
+      name: "Recipe Website",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "A Recipe App built in React, offering intuitive navigation and a user-friendly interface for seamless recipe browsing and management.",
       tags: [
         {
           name: "react",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "nodejs",
           color: "green-text-gradient",
         },
         {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: jobit,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Trip Guide",
-      description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-      tags: [
-        {
-          name: "nextjs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
+          name: "GCP (Firebase)",
           color: "green-text-gradient",
         },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
-    },
+      source_code_link: "https://github.com/KanwalBoparai/Recipe-website-2023",
+    }
   ];
-  
-  export { services, technologies, experiences, testimonials, projects };
+
+  export { services, technologies, experiences, testimonials ,projects};

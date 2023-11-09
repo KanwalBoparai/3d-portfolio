@@ -1,29 +1,33 @@
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas  } from "./components";
-import { Stars } from "@react-three/drei";
-import { OrbitControls } from "@react-three/drei";
-import { StarsCanvasNew } from "./components/canvas";
+import views from './assets/views.mp4';
+import "./App.css";
 
+import { About, Contact, Experience, Hero, Navbar,
+  // Tech,
+   Projects, StarsCanvas } from "./components";
 
 const App = () => {
-
   return (
     <BrowserRouter>
-      <div>
-        <div className='bg-center'>
-          <Navbar />
-          <Hero />
+      <div className='relative z-0 bg-blue'>
+        <div className='video-container'>
+          <video className='videoTag' autoPlay loop muted>
+            <source src={views} type='video/mp4' />
+          </video>
+          <div className='content-overlay bg-cover bg-no-repeat bg-center'>
+            <Navbar />
+            <Hero />
+          </div>
         </div>
-        <StarsCanvasNew />
-      </div>
-      <About />
-      <Experience />
-      <Tech />
-      <Works />
-      <Feedbacks />
-      <div className='relative z-0'>
-        <Contact />
-        <StarsCanvas />
+
+        <About />
+        <Experience />
+        {/* <Tech /> */}
+        <Projects />
+        <div className='relative z-0'>
+          <Contact />
+          <StarsCanvas />
+        </div>
       </div>
     </BrowserRouter>
   )

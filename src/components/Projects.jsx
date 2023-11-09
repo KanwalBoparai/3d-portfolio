@@ -1,5 +1,5 @@
-import React from "react";
-import {Tilt} from "react-tilt";
+/* eslint-disable react/prop-types */
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -24,19 +24,20 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+        className='opacity-75 p-5 rounded-2xl sm:w-[360px] w-full'
+        style={{ background: "linear-gradient(127deg, #a3e5c4, #6b63c6)" }}
       >
-        <div className='relative w-full h-[230px]'>
-          <img
+        <div className='relative w-full h-[100px]'>
+          {/* <img
             src={image}
             alt='project_image'
             className='w-full h-full object-cover rounded-2xl'
-          />
+          /> */}
 
-          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+          <div className='absolute inset-0 flex justify-center m-3 card-img_hover'>
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+              className='w-40 h-40 rounded-full flex justify-center items-baseline cursor-pointer'
             >
               <img
                 src={github}
@@ -48,8 +49,8 @@ const ProjectCard = ({
         </div>
 
         <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+          <h3 className='text-light-green font-bold text-[24px]'>{name}</h3>
+          <p className='mt-2 text-white text-[14px]'>{description}</p>
         </div>
 
         <div className='mt-4 flex flex-wrap gap-2'>
@@ -67,7 +68,7 @@ const ProjectCard = ({
   );
 };
 
-const Works = () => {
+const Projects = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -78,7 +79,7 @@ const Works = () => {
       <div className='w-full flex'>
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
+          className='mt-3 text-dark-blue text-[17px] max-w-3xl leading-[30px]'
         >
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
@@ -88,7 +89,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className='mt-20 flex flex-wrap gap-7'>
+      <div className='mt-20 flex flex-wrap gap-7 justify-center'>
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
@@ -97,4 +98,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Projects, "");

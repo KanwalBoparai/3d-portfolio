@@ -45,13 +45,8 @@ const About = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'>
-
-        I possess proficient in many skills, along with expertise in utilizing 
-        frameworks like React, Node.js, and Three.js. My ability to quickly grasp new concepts allows me 
-        to closely collaborate with clients, developing efficient, scalable, and user-friendly solutions
-        that effectively address real-world challenges. Let's collaborate and transform your ideas into reality!
-      
+        className='mt-4 text-moonstone text-[17px] max-w-3xl leading-[30px]'>
+          Experienced Administrative Assistant with a strong technical background, adept at managing calendars, communication channels, and maintaining accurate records at RS Khalsa High School. As a Data Analyst Intern at Kartar Road Lines, I automated data processes using Excel and VBA, providing crucial insights through SQL analysis. Co-founding BAAJJ.com as a Shopify Developer, I designed user-friendly interfaces, implemented effective marketing strategies, and negotiated favorable terms with suppliers. Currently, as an Information Technology Analyst at CAA, I contribute to the Geo-Temporal Gen 2 project, utilizing machine learning algorithms and statistical models for data analysis and predictive insights. Proficient in polyline encoding, I excel in data compression and geographic data representation, optimizing user experiences in various applications.
       </motion.p>
       <div className='mt-20 flex flex-wrap gap-10'>
         {services.map((service, index) => (
