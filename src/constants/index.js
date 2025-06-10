@@ -31,8 +31,28 @@ import {
       title: "About",
     },
     {
+      id: "education",
+      title: "Education",
+    },
+    {
       id: "work",
       title: "Work",
+    },
+    {
+      id: "skills",
+      title: "Skills",
+    },
+    {
+      id: "leadership",
+      title: "Leadership",
+    },
+    {
+      id: "projects",
+      title: "Projects",
+    },
+    {
+      id: "additional",
+      title: "Additional",
     },
     {
       id: "contact",
@@ -115,6 +135,22 @@ import {
   ];
   
   const experiences = [
+    {
+      title: "Software Engineering Intern",
+      company_name: "Modern Automotive Limited",
+      icon: web, // You may want to replace this with a proper company logo
+      iconBg: "#ffffff",
+      date: "Oct 2024 - Dec 2024",
+      points: [
+        "Built features for a full-stack web application for hybrid vehicle control dashboard using React (TypeScript) and Node.js, implementing RESTful APIs and JWT authentication.",
+        "Created automated tests with Jest and React Testing Library to improve code reliability and catch bugs before production.",
+        "Integrated third-party APIs for our Node.js backend; providing real-time vehicle data synchronization, enhancing the user monitoring experience.",
+        "Implemented a CI/CD pipeline using GitHub Actions that automated builds, testing, and deployments, reducing deployment time by 40%.",
+        "Went from using a local machine to using codespaces to make sure the development process is smooth.",
+        "Participated in Agile development with two-week sprints, daily stand-ups, and weekly retrospectives.",
+        "Collaborated with a designer and product managers to meet project goals and deadlines.",
+      ],
+    },
     {
       title: "Information Technology Analyst",
       company_name: "CAA (The Canadian Automobile Association)",
@@ -202,44 +238,72 @@ import {
   
   const projects = [
     {
-      name: "Recipe Website",
+      name: "3D-Portfolio",
       description:
-        "A Recipe App built in React, offering intuitive navigation and a user-friendly interface for seamless recipe browsing and management.",
+        "Developed a portfolio website using Three.js, React Fiber-Three, and 3D Canvas geometry. Implemented a modular design approach with smaller components for navigation, contact, projects etc. Utilized Framer Motion for object animations and Higher-Order Components to display all modular elements. Used Tailwind CSS for styling and created media and designs with Adobe Photoshop.",
+      tags: [
+        {
+          name: "three.js",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "react",
+          color: "green-text-gradient",
+        },
+        {
+          name: "framer-motion",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "tailwind",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: carrent,
+      source_code_link: "http://localhost:5174/3d-portfolio",
+      live_demo_link: "http://localhost:5174/3d-portfolio",
+    },
+    {
+      name: "Recipe Book",
+      description:
+        "Designed and implemented a design recipe web application with React.js, featuring search functionality. Implemented features for adding favourite recipes, list recipes in a table and a customizable theme feature.",
       tags: [
         {
           name: "react",
           color: "blue-text-gradient",
         },
         {
-          name: "nodejs",
+          name: "javascript",
           color: "green-text-gradient",
         },
         {
-          name: "GCP (Firebase)",
-          color: "green-text-gradient",
+          name: "css",
+          color: "pink-text-gradient",
         },
       ],
+      image: jobit,
       source_code_link: "https://github.com/KanwalBoparai/Recipe-website-2023",
     },
     {
-      name: "Recipe Website",
+      name: "Todo List with React.js",
       description:
-        "A Recipe App built in React, offering intuitive navigation and a user-friendly interface for seamless recipe browsing and management.",
+        "Built an interactive task management app with dynamic input fields and checkbox synchronization. Leveraged useCallback for optimized state management and ensured smooth UI updates.",
       tags: [
         {
           name: "react",
           color: "blue-text-gradient",
         },
         {
-          name: "nodejs",
+          name: "javascript",
           color: "green-text-gradient",
         },
         {
-          name: "GCP (Firebase)",
-          color: "green-text-gradient",
+          name: "hooks",
+          color: "orange-text-gradient",
         },
       ],
-      source_code_link: "https://github.com/KanwalBoparai/Recipe-website-2023",
+      image: tripguide,
+      source_code_link: "https://github.com/KanwalBoparai",
     }
   ];
 

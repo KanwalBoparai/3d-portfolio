@@ -34,13 +34,13 @@ const Navbar = () => {
       }`}
     >
       <div className='w-full flex justify-center items-center max-w-7xl mx-auto'>
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
+        <ul className='list-none hidden lg:flex flex-row gap-6 xl:gap-10'>
           {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
                 active === nav.title ? "text-white" : "#F3F3F3"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } hover:text-white text-[16px] xl:text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>

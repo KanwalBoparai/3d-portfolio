@@ -1,31 +1,47 @@
 .video-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .videoTag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .content-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.1);
-  }
-  
-  .vertical-timeline-element-icon {
-    display: none;
-  }
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.videoTag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.2) saturate(0.8);
+  mix-blend-mode: overlay;
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(68, 89, 140, 0.2),
+    rgba(23, 78, 79, 0.4)
+  );
+}
+
+.vertical-timeline-element-icon {
+  display: none;
+}
+
+/* Add tech-inspired grid pattern */
+.tech-grid {
+  background-image: 
+    linear-gradient(rgba(68, 89, 140, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(68, 89, 140, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
