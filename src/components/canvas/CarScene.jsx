@@ -272,14 +272,14 @@ const CarScene = () => {
           minPolarAngle={Math.PI / 2}
         />
         
-        {/* Underwater Aquarium Lighting Setup */}
-        <ambientLight intensity={0.3} color="#67E8F9" />
+        {/* Space environment lighting */}
+        <ambientLight intensity={0.2} color="#C4B5FD" />
 
-        {/* Filtered sunlight from above */}
+        {/* Primary star light */}
         <directionalLight
           position={[0, 20, 5]}
-          intensity={1.0}
-          color="#BAE6FD"
+          intensity={1.1}
+          color="#93C5FD"
           castShadow
           shadow-mapSize-width={4096}
           shadow-mapSize-height={4096}
@@ -291,31 +291,19 @@ const CarScene = () => {
           shadow-bias={-0.0001}
         />
 
-        {/* Aquarium side lighting */}
-        <pointLight
-          position={[-8, 8, 6]}
-          intensity={0.8}
-          color="#0891B2"
-          distance={25}
-          decay={2}
-        />
+        {/* Nebula blue fill */}
+        <pointLight position={[-8, 8, 6]} intensity={0.7} color="#4A9EFF" distance={25} decay={2} />
 
-        {/* Coral reef glow */}
-        <pointLight
-          position={[8, 6, -6]}
-          intensity={0.6}
-          color="#FB7185"
-          distance={20}
-          decay={2}
-        />
+        {/* Nebula purple accent */}
+        <pointLight position={[8, 6, -6]} intensity={0.5} color="#8B5CF6" distance={20} decay={2} />
 
-        {/* Sea foam lighting */}
+        {/* Aurora teal from above */}
         <spotLight
           position={[0, 20, 0]}
-          intensity={0.7}
+          intensity={0.6}
           angle={0.5}
           penumbra={1.0}
-          color="#A7F3D0"
+          color="#00D4AA"
           distance={30}
           decay={2}
           castShadow
@@ -323,70 +311,41 @@ const CarScene = () => {
           shadow-mapSize-height={2048}
         />
 
-        {/* Underwater ambient glow */}
-        <pointLight
-          position={[0, 3, 0]}
-          intensity={0.4}
-          color="#14B8A6"
-          distance={15}
-          decay={2}
-        />
+        {/* Warm star glow from center */}
+        <pointLight position={[0, 3, 0]} intensity={0.3} color="#FEF3C7" distance={15} decay={2} />
 
-        {/* Moving caustic effects */}
-        <pointLight
-          position={[5, 12, 5]}
-          intensity={0.3}
-          color="#7DD3FC"
-          distance={20}
-          decay={2}
-        />
-        <pointLight
-          position={[-5, 10, -5]}
-          intensity={0.3}
-          color="#67E8F9"
-          distance={20}
-          decay={2}
-        />
-        
-        {/* Ocean Floor */}
+        {/* Side star fills */}
+        <pointLight position={[5, 12, 5]}  intensity={0.2} color="#93C5FD" distance={20} decay={2} />
+        <pointLight position={[-5, 10, -5]} intensity={0.2} color="#C4B5FD" distance={20} decay={2} />
+
+        {/* Space ground — dark asteroid surface */}
         <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[30, 30]} />
-          <meshStandardMaterial
-            color="#083344"
-            metalness={0.1}
-            roughness={0.9}
-            envMapIntensity={0.2}
-          />
+          <meshStandardMaterial color="#080C18" metalness={0.1} roughness={0.95} />
         </mesh>
 
-        {/* Sandy circular area under car path */}
+        {/* Glowing orbital ring under car path */}
         <mesh position={[0, -0.98, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-          <ringGeometry args={[3, 5, 32]} />
+          <ringGeometry args={[3, 5, 64]} />
           <meshStandardMaterial
-            color="#164E63"
-            metalness={0.1}
-            roughness={0.9}
+            color="#4A9EFF"
+            emissive="#4A9EFF"
+            emissiveIntensity={0.08}
+            metalness={0.3}
+            roughness={0.7}
             transparent
-            opacity={0.7}
+            opacity={0.5}
           />
         </mesh>
 
-        {/* Coral reef decorations */}
+        {/* Asteroid decorations */}
         <mesh position={[8, -0.5, 8]} receiveShadow>
-          <coneGeometry args={[0.5, 1.5, 8]} />
-          <meshStandardMaterial
-            color="#FB7185"
-            metalness={0.2}
-            roughness={0.8}
-          />
+          <icosahedronGeometry args={[0.6, 0]} />
+          <meshStandardMaterial color="#1A2540" metalness={0.3} roughness={0.9} />
         </mesh>
         <mesh position={[-8, -0.3, -8]} receiveShadow>
-          <sphereGeometry args={[0.8, 8, 8]} />
-          <meshStandardMaterial
-            color="#A7F3D0"
-            metalness={0.1}
-            roughness={0.9}
-          />
+          <icosahedronGeometry args={[0.9, 1]} />
+          <meshStandardMaterial color="#0F1A30" metalness={0.2} roughness={0.95} />
         </mesh>
         
         <Car />

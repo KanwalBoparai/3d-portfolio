@@ -103,31 +103,31 @@ const EducationScene = () => {
           minPolarAngle={Math.PI / 2}
         />
         
-        {/* Underwater Library Lighting Setup */}
-        <ambientLight intensity={0.4} color="#67E8F9" />
+        {/* Space library lighting */}
+        <ambientLight intensity={0.3} color="#C4B5FD" />
         <directionalLight
           position={[0, 12, 8]}
-          intensity={0.8}
-          color="#BAE6FD"
+          intensity={0.9}
+          color="#93C5FD"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
         />
-        <pointLight position={[-6, 4, 6]} intensity={0.6} color="#0891B2" distance={20} decay={2} />
-        <pointLight position={[6, 4, -6]} intensity={0.5} color="#14B8A6" distance={18} decay={2} />
-        <pointLight position={[0, 6, 0]} intensity={0.4} color="#A7F3D0" distance={15} decay={2} />
+        <pointLight position={[-6, 4, 6]}  intensity={0.6} color="#4A9EFF" distance={20} decay={2} />
+        <pointLight position={[6, 4, -6]}  intensity={0.5} color="#8B5CF6" distance={18} decay={2} />
+        <pointLight position={[0, 6, 0]}   intensity={0.4} color="#00D4AA" distance={15} decay={2} />
         <spotLight
           position={[0, 12, 0]}
-          intensity={0.6}
+          intensity={0.5}
           angle={0.6}
           penumbra={1.0}
-          color="#7DD3FC"
+          color="#93C5FD"
           distance={25}
           decay={2}
           castShadow
         />
-        <pointLight position={[3, 8, 3]} intensity={0.3} color="#FB7185" distance={12} decay={2} />
-        <pointLight position={[-3, 6, -3]} intensity={0.3} color="#67E8F9" distance={12} decay={2} />
+        <pointLight position={[3, 8, 3]}   intensity={0.25} color="#FEF3C7" distance={12} decay={2} />
+        <pointLight position={[-3, 6, -3]} intensity={0.25} color="#C4B5FD" distance={12} decay={2} />
         
         {books.map((book, index) => (
           <Book

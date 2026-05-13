@@ -1,53 +1,36 @@
-import React, { useEffect, useState } from 'react';
+// Particles are computed at module load — synchronous, zero layout shift on mount.
+const COLORS = ["#E8F4FD", "#93C5FD", "#C4B5FD", "#FEF3C7", "#34D399", "#4A9EFF"];
 
-const FloatingParticles = () => {
-  const [particles, setParticles] = useState([]);
+const PARTICLES = Array.from({ length: 30 }, (_, i) => ({
+  id: i,
+  // Deterministic spread — avoids hydration mismatches and layout shifts
+  left:     ((i * 41 + 7)  % 97),
+  top:      ((i * 73 + 13) % 95),
+  size:     1 + (i % 3),           // 1 – 3 px
+  duration: 2.5 + (i % 5) * 0.8,  // 2.5 – 6.3 s
+  delay:    -(i * 0.55),           // stagger start mid-cycle: no initial mass-pop-in
+  color:    COLORS[i % COLORS.length],
+}));
 
-  useEffect(() => {
-    const createParticles = () => {
-      const newParticles = [];
-      for (let i = 0; i < 20; i++) {
-        newParticles.push({
-          id: i,
-          left: Math.random() * 100,
-          size: Math.random() * 6 + 3,
-          duration: Math.random() * 8 + 18,
-          delay: Math.random() * 20,
-          color: [
-            'rgba(103, 232, 249, 0.6)',
-            'rgba(167, 243, 208, 0.5)',
-            'rgba(125, 211, 252, 0.6)',
-            'rgba(251, 113, 133, 0.4)',
-            'rgba(6, 182, 212, 0.6)',
-            'rgba(20, 184, 166, 0.5)'
-          ][Math.floor(Math.random() * 6)]
-        });
-      }
-      setParticles(newParticles);
-    };
-
-    createParticles();
-  }, []);
-
-  return (
-    <div className="floating-particles">
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className="particle"
-          style={{
-            left: `${particle.left}%`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            background: `radial-gradient(circle, ${particle.color} 0%, transparent 70%)`,
-            animationDuration: `${particle.duration}s`,
-            animationDelay: `${particle.delay}s`,
-            animationName: 'bubbleFloat',
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const FloatingParticles = () => (
+  <div className="floating-particles">
+    {PARTICLES.map((p) => (
+      <div
+        key={p.id}
+        className="particle"
+        style={{
+          left:            `${p.left}%`,
+          top:             `${p.top}%`,
+          width:           `${p.size}px`,
+          height:          `${p.size}px`,
+          background:      p.color,
+          boxShadow:       `0 0 ${p.size * 3}px ${p.color}`,
+          animation:       `starTwinkle ${p.duration}s ease-in-out infinite`,
+          animationDelay:  `${p.delay}s`,
+        }}
+      />
+    ))}
+  </div>
+);
 
 export default FloatingParticles;

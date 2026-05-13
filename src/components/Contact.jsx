@@ -27,7 +27,7 @@ const Contact = () => {
           <div className='flex justify-end'>
             <a
               href='mailto:kgsbopar@uwaterloo.ca'
-              className='bg-gradient-to-r from-[#a3e5c4] to-[#6b63c6] py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary flex align-center'
+              className='bg-gradient-to-r from-[#4A9EFF] to-[#8B5CF6] py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-black/40 flex align-center hover:opacity-90 transition-opacity'
             >
               {"Send Email "}
             </a>

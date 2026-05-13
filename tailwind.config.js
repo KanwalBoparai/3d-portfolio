@@ -4,62 +4,113 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Syne', 'sans-serif'],
+        sans: ['Space Grotesk', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       colors: {
-        primary: "#0C4A6E",
-        secondary: "#0891B2",
-        tertiary: "#164E63",
-        "black-100": "#083344",
-        "black-200": "#0F172A",
-        "white-100": "#F0FDFF",
-        "violet-200": "#7DD3FC",
-        "dark-green": "#059669",
-        "moonstone": "#06B6D4",
-        "maize": "#FDE047",
-        "cyan": "#0891B2",
-        "tea-green": "#10B981",
-        "blue": "#1E3A8A",
-        "tech-blue": "#0891B2",
-        "tech-purple": "#7DD3FC",
-        "tech-teal": "#14B8A6",
-        "tech-pink": "#FB7185",
-        "tech-orange": "#F97316",
-        "tech-cyan": "#06B6D4",
-        "dark-blue": "#1E3A8A",
-        "light-bg": "rgba(15, 23, 42, 0.8)",
-        "card-bg": "rgba(8, 51, 68, 0.85)",
-        "card-hover": "rgba(8, 51, 68, 0.95)",
-        "text-primary": "#F0FDFF",
-        "text-secondary": "#BAE6FD",
-        "ocean-deep": "#0C4A6E",
-        "ocean-medium": "#0891B2",
-        "ocean-light": "#7DD3FC",
-        "sea-foam": "#A7F3D0",
-        "coral-pink": "#FB7185",
-        "pearl-white": "#F8FAFC",
-        "aqua-glow": "#67E8F9"
+        /* Cinematic light palette — warm paper + rich charcoal + signal orange */
+        primary:        "#EDE6D7",   /* warm paper */
+        secondary:      "#EB4E1A",   /* signal orange accent */
+        tertiary:       "#FAF5EA",   /* lighter cream surface */
+
+        "black-100":    "#0A0908",   /* rich black */
+        "black-200":    "#1A1815",   /* near-black for high contrast */
+
+        "white-100":    "#0A0908",   /* remapped: was light, now reads as primary text */
+
+        "violet-200":   "#7C3AED",
+        "dark-green":   "#0F766E",
+        "moonstone":    "#EB4E1A",   /* primary accent */
+        "maize":        "#D97706",
+        "cyan":         "#0E7490",
+        "tea-green":    "#0F766E",
+        "blue":         "#1939B5",   /* deep cobalt */
+
+        "tech-blue":    "#1939B5",
+        "tech-purple":  "#7C3AED",
+        "tech-teal":    "#0F766E",
+        "tech-pink":    "#DB2777",
+        "tech-orange":  "#EB4E1A",
+        "tech-cyan":    "#0E7490",
+
+        "dark-blue":    "#0F1E3A",
+        "light-bg":     "rgba(255, 255, 255, 0.65)",
+        "card-bg":      "rgba(255, 255, 255, 0.7)",
+        "card-hover":   "rgba(255, 255, 255, 0.92)",
+
+        "text-primary":   "#0A0908",
+        "text-secondary": "#6B6258",
+
+        /* legacy tokens remapped */
+        "space-deep":    "#EDE6D7",
+        "space-mid":     "#E5DECE",
+        "space-surface": "#FAF5EA",
+        "nebula-blue":   "#1939B5",
+        "nebula-purple": "#7C3AED",
+        "nebula-teal":   "#0F766E",
+        "star-white":    "#0A0908",
+
+        "ocean-deep":    "#EDE6D7",
+        "ocean-medium":  "#1939B5",
+        "ocean-light":   "#6B6258",
+        "sea-foam":      "#0F766E",
+        "coral-pink":    "#DB2777",
+        "pearl-white":   "#0A0908",
+        "aqua-glow":     "#1939B5",
+
+        /* new cinematic tokens */
+        "paper":         "#EDE6D7",
+        "paper-light":   "#FAF5EA",
+        "paper-dark":    "#DDD4C0",
+        "ink":           "#0A0908",
+        "ink-soft":      "#1A1815",
+        "ash":           "#6B6258",
+        "ash-light":     "#9B9388",
+        "signal":        "#EB4E1A",
+        "cobalt":        "#1939B5",
+        "amber":         "#D97706",
       },
       boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
-        "tech-card": "0 4px 20px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1)",
+        card:         "0 24px 60px -20px rgba(10, 9, 8, 0.18)",
+        "tech-card":  "0 8px 32px rgba(10, 9, 8, 0.08), 0 2px 8px rgba(10, 9, 8, 0.04)",
+        "glass":      "0 10px 40px rgba(10, 9, 8, 0.08), 0 2px 6px rgba(10, 9, 8, 0.04), inset 0 1px 0 rgba(255,255,255,0.6)",
+        "glass-hover":"0 24px 60px rgba(10, 9, 8, 0.16), 0 0 0 1px rgba(235, 78, 26, 0.18), inset 0 1px 0 rgba(255,255,255,0.7)",
+        "glow-blue":  "0 0 30px rgba(25, 57, 181, 0.18), 0 0 60px rgba(25, 57, 181, 0.08)",
+        "glow-orange":"0 0 30px rgba(235, 78, 26, 0.22), 0 0 60px rgba(235, 78, 26, 0.10)",
+        "cinematic":  "0 60px 120px -30px rgba(10, 9, 8, 0.4), 0 30px 60px -30px rgba(10, 9, 8, 0.25)",
       },
       screens: {
         xs: "450px",
       },
       backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
-        "tech-gradient": "linear-gradient(135deg, #0891B2, #14B8A6)",
-        "vibrant-gradient": "linear-gradient(135deg, #0891B2 0%, #14B8A6 25%, #059669 50%, #FB7185 75%, #7DD3FC 100%)",
-        "section-gradient": "linear-gradient(135deg, rgba(8, 145, 178, 0.2) 0%, rgba(20, 184, 166, 0.2) 100%)",
-        "card-gradient": "linear-gradient(135deg, rgba(8, 51, 68, 0.9) 0%, rgba(12, 74, 110, 0.85) 100%)",
-        "hero-gradient": "linear-gradient(135deg, #0C4A6E 0%, #164E63 25%, #0891B2 50%, #164E63 75%, #0C4A6E 100%)",
-        "glow-gradient": "radial-gradient(circle, rgba(103, 232, 249, 0.3) 0%, transparent 70%)",
-        "ocean-gradient": "linear-gradient(180deg, #0C4A6E 0%, #164E63 50%, #0891B2 100%)",
-        "underwater-gradient": "linear-gradient(135deg, #083344 0%, #0C4A6E 50%, #164E63 100%)",
-        "bubble-gradient": "radial-gradient(circle, rgba(167, 243, 208, 0.4) 0%, rgba(103, 232, 249, 0.2) 50%, transparent 70%)",
+        "tech-gradient":      "linear-gradient(135deg, #1939B5, #EB4E1A)",
+        "vibrant-gradient":   "linear-gradient(135deg, #1939B5 0%, #7C3AED 33%, #EB4E1A 66%, #D97706 100%)",
+        "section-gradient":   "linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(250,245,234,0.4) 100%)",
+        "card-gradient":      "linear-gradient(135deg, rgba(255,255,255,0.72) 0%, rgba(250,245,234,0.55) 100%)",
+        "hero-gradient":      "linear-gradient(160deg, #EDE6D7 0%, #FAF5EA 50%, #EDE6D7 100%)",
+        "glow-gradient":      "radial-gradient(circle, rgba(235,78,26,0.18) 0%, transparent 70%)",
+        "ocean-gradient":     "linear-gradient(180deg, #EDE6D7 0%, #FAF5EA 50%, #EDE6D7 100%)",
+        "space-gradient":     "linear-gradient(160deg, #EDE6D7 0%, #FAF5EA 50%, #EDE6D7 100%)",
+        "nebula-gradient":    "radial-gradient(ellipse at center, rgba(25,57,181,0.06) 0%, rgba(235,78,26,0.05) 40%, transparent 70%)",
+        "paper-grain":        "radial-gradient(at 20% 30%, rgba(235,78,26,0.06) 0%, transparent 50%), radial-gradient(at 80% 70%, rgba(25,57,181,0.06) 0%, transparent 50%), radial-gradient(at 50% 90%, rgba(217,119,6,0.05) 0%, transparent 50%)",
       },
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      }
+        "twinkle": "twinkle 3s ease-in-out infinite",
+        "marquee": "marquee 28s linear infinite",
+      },
+      keyframes: {
+        twinkle: {
+          "0%, 100%": { opacity: "0.3", transform: "scale(0.7)" },
+          "50%":      { opacity: "1",   transform: "scale(1.3)" },
+        },
+        marquee: {
+          "0%":   { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
     },
   },
   plugins: [],

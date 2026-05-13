@@ -116,32 +116,32 @@ const LeadershipScene = () => {
           minPolarAngle={Math.PI / 2}
         />
         
-        {/* Underwater Trophy Display Lighting */}
-        <ambientLight intensity={0.3} color="#67E8F9" />
+        {/* Space awards lighting */}
+        <ambientLight intensity={0.25} color="#C4B5FD" />
         <directionalLight
           position={[0, 15, 8]}
-          intensity={0.9}
-          color="#BAE6FD"
+          intensity={1.0}
+          color="#93C5FD"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
         />
-        <pointLight position={[-4, 4, 4]} intensity={0.7} color="#FDE047" distance={20} decay={2} />
-        <pointLight position={[4, 4, -4]} intensity={0.6} color="#A7F3D0" distance={18} decay={2} />
-        <pointLight position={[0, 2, 4]} intensity={0.5} color="#0891B2" distance={15} decay={2} />
+        <pointLight position={[-4, 4, 4]}  intensity={0.7} color="#FDE047" distance={20} decay={2} />
+        <pointLight position={[4, 4, -4]}  intensity={0.5} color="#8B5CF6" distance={18} decay={2} />
+        <pointLight position={[0, 2, 4]}   intensity={0.5} color="#4A9EFF" distance={15} decay={2} />
         <spotLight
           position={[0, 12, 0]}
-          intensity={0.8}
+          intensity={0.7}
           angle={0.5}
           penumbra={1.0}
-          color="#7DD3FC"
+          color="#93C5FD"
           distance={30}
           decay={2}
           castShadow
         />
-        <pointLight position={[0, 6, 0]} intensity={0.4} color="#FB7185" distance={12} decay={2} />
-        <pointLight position={[3, 8, 3]} intensity={0.3} color="#14B8A6" distance={15} decay={2} />
-        <pointLight position={[-3, 6, -3]} intensity={0.3} color="#67E8F9" distance={15} decay={2} />
+        <pointLight position={[0, 6, 0]}   intensity={0.35} color="#F472B6" distance={12} decay={2} />
+        <pointLight position={[3, 8, 3]}   intensity={0.25} color="#00D4AA" distance={15} decay={2} />
+        <pointLight position={[-3, 6, -3]} intensity={0.25} color="#C4B5FD" distance={15} decay={2} />
         
         {/* Trophies */}
         <Trophy position={[-2.5, 0, 0]} scale={[0.8, 0.8, 0.8]} color="#FFD700" />

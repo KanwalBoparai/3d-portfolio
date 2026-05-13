@@ -3,6 +3,7 @@ import BallCanvas from "./Ball";
 import StarsCanvas from "./Stars";
 import StarsCanvasNew from "./StarsNew";
 import RobotCanvas from "./Robot";
+import AvatarScene from "./AvatarScene";
 import EducationScene from "./EducationScene";
 import LeadershipScene from "./LeadershipScene";
 import AquaticScene from "./AquaticScene";
@@ -14,6 +15,7 @@ export {
   StarsCanvas,
   StarsCanvasNew,
   RobotCanvas,
+  AvatarScene,
   EducationScene,
   LeadershipScene,
   AquaticScene,

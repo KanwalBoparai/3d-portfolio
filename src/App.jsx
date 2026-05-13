@@ -1,27 +1,44 @@
+import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import views from './assets/views.mp4';
+import Lenis from "lenis";
 import "./App.css";
 
-import { About, Contact, Experience, Hero, Navbar, Tech, Skills, Projects, Education, Leadership, AdditionalInfo, StarsCanvas } from "./components";
-import FloatingParticles from "./components/FloatingParticles";
-import ParticleBackground from "./components/ParticleBackground";
+import {
+  About, Contact, Experience, Hero, Navbar,
+  Skills, Projects, Education, Leadership, AdditionalInfo,
+} from "./components";
+import CommandPalette from "./components/CommandPalette";
+import CustomCursor from "./components/CustomCursor";
 
 const App = () => {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-hero-gradient min-h-screen'>
-        <FloatingParticles />
-        <div className='video-container relative z-10'>
-          <video className='videoTag' autoPlay loop muted style={{opacity: 0.1}}>
-            <source src={views} type='video/mp4' />
-          </video>
-          <div className='content-overlay bg-cover bg-no-repeat bg-center'>
-            <ParticleBackground />
-            <Navbar />
-            <Hero />
-          </div>
-        </div>
+      {/* Custom cursor — desktop only */}
+      <div className="hidden md:block">
+        <CustomCursor />
+      </div>
 
+      {/* All scrollable content — light cinematic bg comes from CSS */}
+      <div className="relative z-10 min-h-screen">
+        <Navbar />
+        <Hero />
         <About />
         <Education />
         <Experience />
@@ -29,13 +46,13 @@ const App = () => {
         <Leadership />
         <Projects />
         <AdditionalInfo />
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-        </div>
+        <Contact />
       </div>
-    </BrowserRouter>
-  )
-}
 
-export default App
+      {/* Global command palette */}
+      <CommandPalette />
+    </BrowserRouter>
+  );
+};
+
+export default App;
