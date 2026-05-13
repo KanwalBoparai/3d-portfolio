@@ -57,7 +57,7 @@ const AvatarModel = () => {
   return (
     <group
       ref={group}
-      position={[0, -1.4, 0]}
+      position={[0, -2.4, 0]}
       scale={1.6}
       rotation={[0, Math.PI, 0]}
       dispose={null}
@@ -127,7 +127,7 @@ const AvatarScene = () => {
 
         {/* Soft contact shadow — grounds the avatar on cream paper */}
         <ContactShadows
-          position={[0, -1.42, 0]}
+          position={[0, -2.42, 0]}
           opacity={0.55}
           blur={2.6}
           far={3}
