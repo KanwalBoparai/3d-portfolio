@@ -51,7 +51,7 @@ const AvatarModel = () => {
   useFrame((state) => {
     if (!group.current) return;
     const t = state.clock.getElapsedTime();
-    group.current.rotation.y = Math.sin(t * 0.3) * 0.18;
+    group.current.rotation.y = Math.PI + Math.sin(t * 0.3) * 0.18;
   });
 
   return (
@@ -59,7 +59,7 @@ const AvatarModel = () => {
       ref={group}
       position={[0, -1.4, 0]}
       scale={1.6}
-      rotation={[0, -0.2, 0]}
+      rotation={[0, Math.PI, 0]}
       dispose={null}
     >
       <primitive object={scene} />
