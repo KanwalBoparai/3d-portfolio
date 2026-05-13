@@ -45,9 +45,9 @@ const ExperienceCard = ({ experience }) => {
               href={experience.link}
               target="_blank"
               rel="noreferrer"
-              className='text-[13px] text-blue-300 hover:text-white transition-colors'
+              className='inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[12px] font-semibold bg-blue-500/20 text-blue-300 border border-blue-400/40 hover:bg-blue-500/40 hover:text-white hover:border-blue-300 transition-all duration-200'
             >
-              ↗
+              Visit Site ↗
             </a>
           )}
         </div>
