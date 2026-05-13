@@ -70,35 +70,41 @@ const Skills = () => {
       category: "Languages",
       icon: "💻",
       color: "bg-tech-blue",
-      skills: ["Python", "C/C++", "TypeScript", "JavaScript", "HTML", "SQL", "VBA"]
+      skills: ["TypeScript", "JavaScript", "Python", "C/C++", "SQL", "HTML/CSS", "Liquid"],
     },
     {
-      category: "Web Development",
+      category: "Frontend",
       icon: "🌐",
       color: "bg-tech-purple",
-      skills: ["Next.js", "Node.js", "Three.js", "React", "Tailwind CSS", "Shopify Development"]
+      skills: ["React", "Next.js", "Tailwind CSS", "Three.js", "React Three Fiber", "Framer Motion", "Figma"],
     },
     {
-      category: "Tools & Technologies",
-      icon: "🛠️",
+      category: "Backend & Data",
+      icon: "🗄️",
       color: "bg-tech-teal",
-      skills: ["Git", "Linux", "AWS", "MySQL", "Google Cloud Platform", "Figma", "Miro", "Framer"]
+      skills: ["Node.js", "FastAPI", "RESTful APIs", "JWT Auth", "PostgreSQL", "AWS", "GCP", "Vercel"],
     },
     {
-      category: "Specialized Skills",
-      icon: "⚡",
+      category: "AI / LLMs",
+      icon: "🤖",
       color: "bg-tech-pink",
-      skills: ["3D Graphics", "REST APIs", "Google Analytics", "Hugging Face", "Agile Development", "SEO Techniques"]
-    }
+      skills: ["OpenAI API", "Anthropic API", "Claude Code", "OpenRouter", "Hugging Face", "LangChain", "Prompt Engineering", "Structured Outputs", "Function Calling", "RAG", "AI Agents", "Evals & Guardrails"],
+    },
+    {
+      category: "DevOps & Tooling",
+      icon: "⚙️",
+      color: "bg-tech-blue",
+      skills: ["Git", "GitHub Actions (CI/CD)", "Codespaces", "Jest", "React Testing Library", "Postman", "Agile/Scrum"],
+    },
   ];
 
   const topSkills = [
-    { skill: "React.js", level: "Advanced", color: "bg-tech-blue text-white" },
-    { skill: "Three.js", level: "Intermediate", color: "bg-tech-purple text-white" },
-    { skill: "Node.js", level: "Advanced", color: "bg-tech-teal text-white" },
-    { skill: "Python", level: "Expert", color: "bg-tech-pink text-white" },
-    { skill: "TypeScript", level: "Advanced", color: "bg-tech-blue text-white" },
-    { skill: "AWS", level: "Intermediate", color: "bg-tech-purple text-white" },
+    { skill: "React / Next.js", level: "Advanced", color: "bg-tech-blue text-white" },
+    { skill: "TypeScript", level: "Advanced", color: "bg-tech-purple text-white" },
+    { skill: "Python", level: "Expert", color: "bg-tech-teal text-white" },
+    { skill: "Node.js / FastAPI", level: "Advanced", color: "bg-tech-pink text-white" },
+    { skill: "LLMs & AI Agents", level: "Advanced", color: "bg-tech-blue text-white" },
+    { skill: "RAG & Evals", level: "Intermediate", color: "bg-tech-purple text-white" },
   ];
 
   return (
@@ -112,9 +118,10 @@ const Skills = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-ocean-light text-[17px] max-w-3xl leading-[30px]"
       >
-        I specialize in modern web technologies and frameworks, with expertise spanning from 
-        frontend development with React and Three.js to backend systems with Node.js and cloud 
-        platforms. My diverse skill set enables me to build comprehensive, scalable solutions.
+        Full-stack engineer comfortable across TypeScript, Python, and the modern web stack —
+        with a strong focus on AI/LLM systems: RAG pipelines, agent workflows, structured outputs,
+        function calling, and evals. I build end-to-end from React frontends to FastAPI backends
+        to production-grade LLM integrations.
       </motion.p>
 
       <div className="mt-20 flex flex-col lg:flex-row gap-10">
