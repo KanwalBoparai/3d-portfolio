@@ -185,6 +185,7 @@ import {
       icon: backend,
       iconBg: "#ffffff",
       date: "Feb 2021 – Aug 2021",
+      link: "https://crystalhoodsystem.com/",
       points: [
         "Built and shipped a production marketing site with TypeScript and Next.js focused on responsive design and SEO; integrated Firebase, next-seo, and Google reCAPTCHA.",
       ],
@@ -243,7 +244,7 @@ import {
       ],
       image: carrent,
       source_code_link: "https://github.com/KanwalBoparai",
-      live_demo_link: "https://github.com/KanwalBoparai",
+      live_demo_link: "https://delegate-ai-assistant.onrender.com/",
     },
     {
       name: "ApplyPilot",
@@ -294,7 +295,7 @@ import {
       ],
       image: tripguide,
       source_code_link: "https://github.com/KanwalBoparai/kanwal-3d-portfolio",
-      live_demo_link: "https://3d-portfolio-rho-six.vercel.app/",
+      live_demo_link: "https://3d-portfolio-git-main-kanwalboparais-projects.vercel.app/",
     },
   ];
 
