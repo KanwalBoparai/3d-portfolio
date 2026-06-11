@@ -1,58 +1,57 @@
-import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import Lenis from "lenis";
-import "./App.css";
+import { useEffect } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { useStore } from './store'
+import SceneRoot from './scene/SceneRoot'
+import LoadingScreen from './ui/LoadingScreen'
+import HUD from './ui/HUD'
+import SectionOverlay from './ui/SectionOverlay'
+import CustomCursor from './ui/CustomCursor'
 
-import {
-  About, Contact, Experience, Hero, Navbar,
-  Skills, Projects, Education, Leadership, AdditionalInfo,
-} from "./components";
-import CommandPalette from "./components/CommandPalette";
-import CustomCursor from "./components/CustomCursor";
+export default function App() {
+  const isMobile = useStore((s) => s.isMobile)
 
-const App = () => {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      smoothWheel: true,
-    });
+    const { setIsMobile, setReducedMotion } = useStore.getState()
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    const mqMobile = window.matchMedia('(max-width: 768px), (pointer: coarse)')
+    const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const syncMobile = () => setIsMobile(mqMobile.matches)
+    const syncMotion = () => setReducedMotion(mqMotion.matches)
+    syncMobile()
+    syncMotion()
+    mqMobile.addEventListener('change', syncMobile)
+    mqMotion.addEventListener('change', syncMotion)
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') useStore.getState().closeSection()
     }
-    requestAnimationFrame(raf);
+    window.addEventListener('keydown', onKey)
 
-    return () => lenis.destroy();
-  }, []);
+    return () => {
+      mqMobile.removeEventListener('change', syncMobile)
+      mqMotion.removeEventListener('change', syncMotion)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [])
 
   return (
-    <BrowserRouter>
-      {/* Custom cursor — desktop only */}
-      <div className="hidden md:block">
-        <CustomCursor />
-      </div>
+    <div className="fixed inset-0 bg-void">
+      <Canvas
+        dpr={[1, isMobile ? 1.75 : 2]}
+        gl={{ antialias: false, powerPreference: 'high-performance', alpha: false }}
+        camera={{ fov: 55, near: 0.1, far: 120, position: [0, 1.7, 16] }}
+      >
+        <SceneRoot />
+      </Canvas>
 
-      {/* All scrollable content — light cinematic bg comes from CSS */}
-      <div className="relative z-10 min-h-screen">
-        <Navbar />
-        <Hero />
-        <About />
-        <Education />
-        <Experience />
-        <Skills />
-        <Leadership />
-        <Projects />
-        <AdditionalInfo />
-        <Contact />
-      </div>
+      <HUD />
+      <SectionOverlay />
+      <LoadingScreen />
 
-      {/* Global command palette */}
-      <CommandPalette />
-    </BrowserRouter>
-  );
-};
+      {/* CRT layer above everything */}
+      <div className="scanlines pointer-events-none fixed inset-0 z-40 opacity-60" aria-hidden />
 
-export default App;
+      <CustomCursor />
+    </div>
+  )
+}
