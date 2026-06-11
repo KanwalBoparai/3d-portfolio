@@ -8,6 +8,7 @@ import { makeShellMaterial, makeInnerSkullMaterial } from './head/materials'
 import Eyes from './head/Eyes'
 import BrainCore from './head/BrainCore'
 import Halo from './head/Halo'
+import LivingPhoto, { useHeroPhoto } from './head/LivingPhoto'
 
 const HEAD_URL = `${import.meta.env.BASE_URL}models/head.glb`
 
@@ -19,6 +20,22 @@ const SHELL_CUT = 2.58 // ceramic shell opens here
 const INNER_CUT = 2.3 // gunmetal skull cut lower — layered depth at the rim
 
 export default function RobotHead() {
+  // If an AI-rendered hero portrait exists in public/hero/, it takes over the
+  // stage as a living photo; the procedural head remains the fallback.
+  const photo = useHeroPhoto()
+  if (photo.status === 'ready') {
+    return (
+      <>
+        <LivingPhoto texture={photo.texture} />
+        <directionalLight position={[2.2, 2.6, 4.2]} intensity={1.2} color="#fff1da" />
+      </>
+    )
+  }
+  if (photo.status === 'loading') return null
+  return <ProceduralHead />
+}
+
+function ProceduralHead() {
   const { nodes } = useGLTF(HEAD_URL)
   const geometry = useMemo(
     () => Object.values(nodes).find((n) => n.isMesh)?.geometry,
