@@ -1,4 +1,4 @@
-// Dev-only visual probe: boots the experience in headless Chrome, walks the
+// Dev-only visual probe: loads the experience in headless Chrome, walks the
 // interaction flow, and saves screenshots to /tmp/shots. Not part of the app.
 import { chromium } from 'playwright-core'
 import fs from 'node:fs'
@@ -27,37 +27,45 @@ page.on('console', (msg) => {
 page.on('pageerror', (err) => errors.push(String(err)))
 
 await page.goto(URL, { waitUntil: 'load', timeout: 60000 })
-await page.waitForTimeout(4500)
-await page.screenshot({ path: `${OUT}/${tag}1-boot.png` })
+await page.waitForTimeout(6500) // loading veil + intro dolly
+await page.screenshot({ path: `${OUT}/${tag}1-hero.png` })
 
-// Establish link
-const btn = page.getByRole('button', { name: /establish link/i })
-await btn.waitFor({ state: 'visible', timeout: 15000 })
-await btn.click()
-await page.waitForTimeout(3500) // intro flight
-await page.screenshot({ path: `${OUT}/${tag}2-idle.png` })
-
-// Move cursor near head to test eye tracking pose
-await page.mouse.move(1100, 250)
+// Eye tracking pose
+await page.mouse.move(1150, 230)
 await page.waitForTimeout(900)
-await page.screenshot({ path: `${OUT}/${tag}3-look.png` })
+await page.screenshot({ path: `${OUT}/${tag}2-look.png` })
 
-// Open Projects via nav (reliable target), capturing dive mid-flight
-const nav = page.getByRole('button', { name: 'PROJECTS', exact: true })
-if (await nav.count()) {
-  await nav.first().click()
-} else {
-  await page.locator('nav button', { hasText: 'PROJECTS' }).first().click()
+if (!MOBILE) {
+  // Drag to rotate
+  await page.mouse.move(720, 380)
+  await page.mouse.down()
+  await page.mouse.move(980, 380, { steps: 12 })
+  await page.mouse.up()
+  await page.waitForTimeout(500)
+  await page.screenshot({ path: `${OUT}/${tag}3-drag.png` })
+  await page.waitForTimeout(2200)
 }
-await page.waitForTimeout(1100)
-await page.screenshot({ path: `${OUT}/${tag}4-dive.png` })
-await page.waitForTimeout(2200)
-await page.screenshot({ path: `${OUT}/${tag}5-projects.png` })
 
-// Disconnect
-await page.keyboard.press('Escape')
-await page.waitForTimeout(2600)
-await page.screenshot({ path: `${OUT}/${tag}6-returned.png` })
+// Click the PROJECTS nav link → smooth scroll into the section
+await page.getByRole('button', { name: 'PROJECTS' }).first().click({ timeout: 10000 }).catch(async () => {
+  await page.evaluate(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'auto' }))
+})
+await page.waitForTimeout(2200)
+await page.screenshot({ path: `${OUT}/${tag}4-projects.png` })
+
+// Resume + contact sections
+await page.evaluate(() => document.getElementById('resume')?.scrollIntoView({ behavior: 'auto' }))
+await page.waitForTimeout(1400)
+await page.screenshot({ path: `${OUT}/${tag}5-resume.png` })
+
+await page.evaluate(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'auto' }))
+await page.waitForTimeout(1400)
+await page.screenshot({ path: `${OUT}/${tag}6-contact.png` })
+
+// Back to top — cards grid just below hero
+await page.evaluate(() => window.scrollTo({ top: window.innerHeight * 0.95 }))
+await page.waitForTimeout(1600)
+await page.screenshot({ path: `${OUT}/${tag}7-cards.png` })
 
 console.log('console errors:', errors.length ? errors.slice(0, 10) : 'none')
 await browser.close()

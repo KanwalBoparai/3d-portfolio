@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useStore } from '../store'
-import { sectionById } from '../scene/lib'
 
-// Crosshair cursor — dot snaps to pointer, ring trails it. Desktop only.
+// Minimal luxe cursor — ink dot, trailing hairline ring that warms on hover
 export default function CustomCursor() {
   const dotRef = useRef()
   const ringRef = useRef()
@@ -25,10 +24,8 @@ export default function CustomCursor() {
       if (dotRef.current) dotRef.current.style.transform = `translate(${pos.x}px, ${pos.y}px)`
       if (ringRef.current) {
         const hovered = useStore.getState().hovered
-        const color = hovered ? sectionById(hovered)?.color ?? '#00e5ff' : 'rgba(0,229,255,0.5)'
-        const scale = hovered ? 1.6 : 1
-        ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) scale(${scale})`
-        ringRef.current.style.borderColor = color
+        ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) scale(${hovered ? 1.55 : 1})`
+        ringRef.current.style.borderColor = hovered ? '#b08d3e' : 'rgba(44, 38, 32, 0.35)'
       }
       raf = requestAnimationFrame(loop)
     }
@@ -43,10 +40,7 @@ export default function CustomCursor() {
 
   return (
     <div className="hidden md:block pointer-events-none fixed inset-0 z-[60]" aria-hidden>
-      <div
-        ref={dotRef}
-        className="absolute -top-[2px] -left-[2px] w-1 h-1 bg-cyber-cyan rounded-full shadow-[0_0_6px_#00e5ff]"
-      />
+      <div ref={dotRef} className="absolute -top-[2px] -left-[2px] w-1 h-1 bg-ink rounded-full" />
       <div
         ref={ringRef}
         className="absolute -top-[14px] -left-[14px] w-7 h-7 border rounded-full transition-[border-color] duration-200"

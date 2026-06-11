@@ -8,66 +8,51 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  overflow: hidden; /* single-screen experience — panels scroll internally */
+html {
+  scroll-behavior: auto; /* Lenis drives smoothing */
 }
 
 body {
-  font-family: 'Rajdhani', sans-serif;
-  background: #02040a;
-  color: #bedeff;
+  font-family: 'Outfit', sans-serif;
+  background: #f4efe6;
+  color: #2c2620;
+  min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(0, 229, 255, 0.35);
-  color: #fff;
+  background: rgba(176, 141, 62, 0.25);
+  color: #2c2620;
 }
 
-/* Hide native cursor where the custom crosshair is active */
+/* Custom crosshair cursor active only on precise pointers */
 @media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
+  body,
   a,
   button {
     cursor: none;
   }
 }
 
-/* CRT scanlines + flicker layer (applied by App) */
-.scanlines {
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 2px,
-    rgba(0, 0, 0, 0.22) 3px,
-    transparent 4px
-  );
-  mix-blend-mode: overlay;
+/* Thin warm scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #efe8da;
+}
+::-webkit-scrollbar-thumb {
+  background: #cdbd9b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b08d3e;
 }
 
-/* Panel scrollbar */
-.panel-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 229, 255, 0.35) transparent;
-}
-.panel-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-.panel-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.panel-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 229, 255, 0.35);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-flicker {
-    animation: none;
-  }
+/* Hairline divider helper */
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, rgba(44, 38, 32, 0.18), rgba(44, 38, 32, 0.02));
 }

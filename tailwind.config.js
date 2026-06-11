@@ -4,32 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: '#02040a',
-        abyss: '#050a14',
-        cyber: {
-          cyan: '#00e5ff',
-          magenta: '#ff2e88',
-          amber: '#ffb300',
-          violet: '#9d6bff',
-          green: '#00ff9d',
-        },
-        ghost: 'rgba(190, 222, 255, 0.62)',
-        faint: 'rgba(120, 160, 200, 0.35)',
+        cream: '#f4efe6',
+        ivory: '#faf7f1',
+        sand: '#e9e0cf',
+        champagne: '#e3d3b4',
+        ink: '#2c2620',
+        stone: '#6f6457',
+        hairline: 'rgba(44, 38, 32, 0.12)',
+        gold: '#b08d3e',
+        goldsoft: '#d2b97c',
       },
       fontFamily: {
-        display: ['Orbitron', 'sans-serif'],
-        body: ['Rajdhani', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['Italiana', 'serif'],
+        body: ['Outfit', 'sans-serif'],
       },
-      animation: {
-        flicker: 'flicker 4s linear infinite',
-      },
-      keyframes: {
-        flicker: {
-          '0%, 91%, 94%, 98%, 100%': { opacity: '1' },
-          '92%': { opacity: '0.6' },
-          '96%': { opacity: '0.8' },
-        },
+      boxShadow: {
+        lift: '0 24px 60px -24px rgba(60, 48, 30, 0.18), 0 6px 18px -8px rgba(60, 48, 30, 0.10)',
+        'lift-lg': '0 40px 90px -30px rgba(60, 48, 30, 0.26), 0 10px 28px -12px rgba(60, 48, 30, 0.14)',
       },
     },
   },

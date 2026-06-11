@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useStore } from './store'
+import { initScroll } from './scroll'
 import SceneRoot from './scene/SceneRoot'
 import LoadingScreen from './ui/LoadingScreen'
-import HUD from './ui/HUD'
-import SectionOverlay from './ui/SectionOverlay'
+import Navbar from './ui/Navbar'
+import Hero from './ui/Hero'
+import Cards from './ui/Cards'
+import { Projects, Resume, Experience, Skills, Contact, Footer } from './ui/sections'
 import CustomCursor from './ui/CustomCursor'
 
 export default function App() {
@@ -22,36 +25,51 @@ export default function App() {
     mqMobile.addEventListener('change', syncMobile)
     mqMotion.addEventListener('change', syncMotion)
 
-    const onKey = (e) => {
-      if (e.key === 'Escape') useStore.getState().closeSection()
-    }
-    window.addEventListener('keydown', onKey)
+    const destroyScroll = initScroll()
 
     return () => {
       mqMobile.removeEventListener('change', syncMobile)
       mqMotion.removeEventListener('change', syncMotion)
-      window.removeEventListener('keydown', onKey)
+      destroyScroll()
     }
   }, [])
 
   return (
-    <div className="fixed inset-0 bg-void">
-      <Canvas
-        dpr={[1, isMobile ? 1.75 : 2]}
-        gl={{ antialias: false, powerPreference: 'high-performance', alpha: false }}
-        camera={{ fov: 55, near: 0.1, far: 120, position: [0, 1.7, 16] }}
-      >
-        <SceneRoot />
-      </Canvas>
+    <>
+      {/* The living scene — pinned behind the page */}
+      <div className="fixed inset-0 z-0">
+        <Canvas
+          dpr={[1, isMobile ? 1.75 : 2]}
+          gl={{ antialias: false, powerPreference: 'high-performance', alpha: false }}
+          camera={{ fov: 50, near: 0.1, far: 100, position: [0, 0.9, 10.8] }}
+        >
+          <SceneRoot />
+        </Canvas>
+      </div>
 
-      <HUD />
-      <SectionOverlay />
+      <Navbar />
+
+      {/* Hero — transparent window onto the scene */}
+      <div className="relative z-10 h-screen pointer-events-none">
+        <Hero />
+      </div>
+
+      {/* Content scrolls up over the stage */}
+      <main className="relative z-10">
+        <div className="bg-gradient-to-b from-transparent via-cream/80 to-cream h-28 -mt-28 pointer-events-none" />
+        <div className="bg-cream">
+          <Cards />
+          <Projects />
+          <Resume />
+          <Experience />
+          <Skills />
+          <Contact />
+          <Footer />
+        </div>
+      </main>
+
       <LoadingScreen />
-
-      {/* CRT layer above everything */}
-      <div className="scanlines pointer-events-none fixed inset-0 z-40 opacity-60" aria-hidden />
-
       <CustomCursor />
-    </div>
+    </>
   )
 }

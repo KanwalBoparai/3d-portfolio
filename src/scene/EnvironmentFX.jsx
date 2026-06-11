@@ -1,75 +1,41 @@
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useStore } from '../store'
 import { NOISE } from './glsl'
 
-// ── Holographic floor: polar grid + radar pulse, fading into the void ────────
+// ── Stage floor: soft contact shadow + engraved rings + gold pulse on click ──
 const floorFragment = /* glsl */ `
   uniform float uTime;
   uniform float uPulse;
   varying vec2 vUv;
-  #define PI 3.14159265
 
   void main() {
-    vec2 p = (vUv - 0.5) * 32.0;
+    vec2 p = (vUv - 0.5) * 26.0;
     float r = length(p);
-    float a = atan(p.y, p.x);
 
-    float rings = smoothstep(0.045, 0.0, abs(fract(r * 0.55) - 0.5) - 0.44);
-    float spokes = smoothstep(0.02, 0.0, abs(fract(a / (2.0 * PI) * 28.0) - 0.5) - 0.46);
+    // Soft contact shadow pooling beneath the head
+    float shadow = exp(-r * r * 0.055) * 0.30;
 
-    // Radar pulse expanding from beneath the head
-    float wave = fract(uTime * 0.10);
-    float radar = exp(-pow((r - wave * 16.0) * 0.9, 2.0)) * (1.0 - wave);
+    // Engraved concentric hairlines, fading outward
+    float rings = smoothstep(0.05, 0.0, abs(fract(r * 0.5) - 0.5) - 0.42);
+    float fade = smoothstep(12.0, 2.0, r);
 
-    float fade = smoothstep(15.5, 2.5, r);
-    float center = exp(-r * r * 0.06) * 0.5;
+    // Gold ripple expanding when a node is engaged
+    float wave = fract(uTime * 0.08);
+    float ripple = exp(-pow((r - wave * 13.0) * 1.1, 2.0)) * (1.0 - wave);
 
-    vec3 cyan = vec3(0.0, 0.9, 1.0);
-    vec3 col = cyan * (rings * 0.16 + spokes * 0.05) * fade;
-    col += cyan * radar * (0.35 + uPulse * 0.9) * fade;
-    col += cyan * center * (0.25 + uPulse * 0.6);
+    vec3 base = vec3(0.0);
+    float alpha = shadow + rings * fade * 0.10;
+    vec3 col = mix(base, vec3(0.45, 0.34, 0.16), rings * fade * 0.55);
+    col += vec3(1.3, 1.0, 0.5) * ripple * (0.10 + uPulse * 0.55) * fade;
+    alpha += ripple * (0.06 + uPulse * 0.30) * fade;
 
-    gl_FragColor = vec4(col, fade * 0.85);
+    gl_FragColor = vec4(col, alpha);
   }
 `
 
-// ── Volumetric light shafts: additive open cones, edge-faded ─────────────────
-const shaftVertex = /* glsl */ `
-  varying vec2 vUv;
-  varying vec3 vNormal;
-  varying vec3 vWorldPos;
-  void main() {
-    vUv = uv;
-    vec4 wp = modelMatrix * vec4(position, 1.0);
-    vWorldPos = wp.xyz;
-    vNormal = normalize(mat3(modelMatrix) * normal);
-    gl_Position = projectionMatrix * viewMatrix * wp;
-  }
-`
-
-const shaftFragment = /* glsl */ `
-  uniform vec3 uColor;
-  uniform float uTime;
-  uniform float uSeed;
-  varying vec2 vUv;
-  varying vec3 vNormal;
-  varying vec3 vWorldPos;
-  ${NOISE}
-
-  void main() {
-    vec3 v = normalize(cameraPosition - vWorldPos);
-    float edge = pow(abs(dot(normalize(vNormal), v)), 1.6);
-    float vert = pow(vUv.y, 1.8);
-    float dust = 0.75 + 0.25 * fbm(vUv * vec2(3.0, 8.0) + vec2(uSeed, -uTime * 0.06));
-    float flicker = 0.9 + 0.1 * sin(uTime * 0.7 + uSeed * 20.0);
-    float a = edge * vert * dust * flicker * 0.16;
-    gl_FragColor = vec4(uColor, a);
-  }
-`
-
-// ── Sky dome: vertical gradient + drifting nebula tint ───────────────────────
+// ── Sky dome: warm ivory gradient with the faintest champagne wash ───────────
 const domeFragment = /* glsl */ `
   uniform float uTime;
   varying vec3 vDir;
@@ -78,46 +44,16 @@ const domeFragment = /* glsl */ `
   void main() {
     vec3 d = normalize(vDir);
     float h = d.y * 0.5 + 0.5;
-    vec3 col = mix(vec3(0.004, 0.008, 0.020), vec3(0.012, 0.025, 0.055), pow(h, 1.4));
-    float neb = fbm(d.xz * 2.4 + d.y * 1.2 + uTime * 0.006);
-    col += vec3(0.04, 0.015, 0.09) * neb * (1.0 - h) * 0.9;
-    col += vec3(0.0, 0.04, 0.06) * fbm(d.xy * 3.1 - uTime * 0.004) * 0.5;
+    vec3 col = mix(vec3(0.918, 0.886, 0.825), vec3(0.972, 0.957, 0.925), pow(h, 1.25));
+    // Soft warm halo behind and above the head
+    float halo = exp(-pow(length(d.xy - vec2(0.0, 0.18)) * 2.2, 2.0)) * step(0.0, d.z * -1.0 + 1.0);
+    col += vec3(0.055, 0.04, 0.012) * halo;
+    col += vec3(0.03, 0.022, 0.008) * fbm(d.xz * 2.2 + uTime * 0.004);
     gl_FragColor = vec4(col, 1.0);
   }
 `
 
-function Shaft({ position, color, seed, scale = 1 }) {
-  const uniforms = useMemo(
-    () => ({ uColor: { value: new THREE.Color(color) }, uTime: { value: 0 }, uSeed: { value: seed } }),
-    [color, seed]
-  )
-  const target = useMemo(() => new THREE.Vector3(0, -2.7, 0), [])
-  const groupRef = useRef()
-  useFrame((state) => {
-    uniforms.uTime.value = state.clock.elapsedTime
-    if (groupRef.current) groupRef.current.lookAt(target)
-  })
-  return (
-    <group ref={groupRef} position={position}>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 6 * scale]}>
-        <coneGeometry args={[3.1 * scale, 12 * scale, 24, 1, true]} />
-        <shaderMaterial
-          vertexShader={shaftVertex}
-          fragmentShader={shaftFragment}
-          uniforms={uniforms}
-          transparent
-          side={THREE.DoubleSide}
-          depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-    </group>
-  )
-}
-
 export default function EnvironmentFX() {
-  const isMobile = useStore((s) => s.isMobile)
-
   const floorUniforms = useMemo(() => ({ uTime: { value: 0 }, uPulse: { value: 0 } }), [])
   const domeUniforms = useMemo(() => ({ uTime: { value: 0 } }), [])
 
@@ -130,9 +66,9 @@ export default function EnvironmentFX() {
 
   return (
     <group>
-      {/* Sky dome */}
+      {/* Ivory dome */}
       <mesh>
-        <sphereGeometry args={[44, 32, 16]} />
+        <sphereGeometry args={[42, 32, 16]} />
         <shaderMaterial
           vertexShader={/* glsl */ `
             varying vec3 vDir;
@@ -148,9 +84,9 @@ export default function EnvironmentFX() {
         />
       </mesh>
 
-      {/* Holo floor */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.7, 0]}>
-        <circleGeometry args={[16, 64]} />
+      {/* Stage floor */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.6, 0]}>
+        <circleGeometry args={[14, 64]} />
         <shaderMaterial
           vertexShader={/* glsl */ `
             varying vec2 vUv;
@@ -163,19 +99,12 @@ export default function EnvironmentFX() {
           uniforms={floorUniforms}
           transparent
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
         />
       </mesh>
 
-      {/* Volumetric shafts raking the head from above-behind */}
-      <Shaft position={[-5.5, 8, -4.5]} color="#0a4a66" seed={1.7} />
-      {!isMobile && <Shaft position={[5.8, 8.5, -4]} color="#3a1a5e" seed={4.2} />}
-      {!isMobile && <Shaft position={[0.5, 9.5, -6.5]} color="#5e1038" seed={8.9} scale={1.2} />}
-
-      {/* Minimal conventional lighting for any standard materials */}
-      <ambientLight intensity={0.35} color="#7fb4d8" />
-      <directionalLight position={[4, 6, 5]} intensity={1.0} color="#bfe9ff" />
-      <directionalLight position={[-5, 2, -4]} intensity={0.7} color="#ff2e88" />
+      <ambientLight intensity={0.9} color="#fff7e8" />
+      <directionalLight position={[4, 6, 5]} intensity={1.1} color="#fff2d8" />
+      <directionalLight position={[-5, 2, -4]} intensity={0.45} color="#e8d9ff" />
     </group>
   )
 }

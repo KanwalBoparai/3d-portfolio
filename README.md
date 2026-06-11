@@ -1,38 +1,46 @@
-# NEURAL//LINK — Kanwal Boparai's 3D Portfolio
+# CYBER MIND — Kanwal Boparai's 3D Portfolio
 
-A cinematic, interactive 3D portfolio. A cybernetic head floats in a dark futuristic
-environment — its eyes track your cursor, neural cables run from its skull to five
-holographic nodes (**Projects · Experience · Skills · Resume · Contact**), and clicking
-a node or its cable flies the camera along the wire into that memory sector.
+A premium, cinematic interactive 3D portfolio in a warm-white / champagne aesthetic.
+An elegant humanoid robot mind floats at the center of the hero — porcelain skin,
+glowing gold eyes that track your cursor, and an exposed brain of light cresting
+through its open cranium. Luminous wires flow down from behind the head into glass
+nodes for **Projects · Resume · Experience · Skills · Contact**; clicking a node (or
+its wire) glides you into that section.
 
-Inspired by *Ghost in the Shell*, *Cyberpunk 2077* and *Deus Ex*.
+Luxury sci-fi, not cyberpunk: Apple-like cleanliness meets interactive art.
 
 ## Experience
 
-- **Boot sequence** — terminal-style BIOS boot, then "ESTABLISH LINK" to jack in
-- **Living head** — cursor-tracked eyes, attention-turning head, breathing float,
-  pulsing synaptic point-cloud brain that glows through the cranium
-- **Neural cables** — energy packets race along each wire; hover to charge them
-- **Cinematic camera** — curve-based fly-throughs along the cables, FOV swell and
-  chromatic-aberration surge mid-flight, damped glide while focused
-- **Atmosphere** — volumetric light shafts, drifting particle dust, holographic
-  radar floor, procedural nebula dome, CRT scanlines
-- **HUD** — live telemetry (clock, FPS, link status), nav rail, sector tracking
+- **Living head** — slow rotation, cursor attention, breathing float, drag-to-rotate,
+  eye tracking; brain particles pulse when you engage a section
+- **Wires** — layered bronze strands with soft golden light packets flowing downward
+- **Glass nodes** — frosted orbs with hairline gold rings and side label stacks
+- **Cinematic page** — full-viewport 3D hero, preview card grid (01–05 + X), then
+  full content sections; Lenis smooth scroll with soft camera parallax as you leave
+  the stage
+- **Quiet boot** — a hairline progress veil lifts into a slow camera dolly
+
+## Content
+
+All content lives in `src/data/content.js` — profile, sections, featured projects,
+additional GitHub repos, experience (with locations), skills and education.
+
+**Résumé PDF:** the Resume section links to `./resume.pdf`. Drop your PDF at
+`public/resume.pdf` and it ships with the build.
 
 ## Tech
 
 | Layer | Stack |
 | --- | --- |
 | Rendering | Three.js + React Three Fiber + drei |
-| Shaders | Hand-written GLSL (head shell, eyes, brain, cables, holo-nodes, floor, dome, shafts) |
-| Post | `postprocessing` — Bloom, SMAA, ChromaticAberration, Noise, Vignette |
-| State | zustand FSM (`boot → intro → idle ⇄ dive → focus → return`) |
-| UI | React 19, Tailwind CSS, Framer Motion |
+| Shaders | Hand-written GLSL (porcelain shell with open-cranium discard, eyes, brain cloud, wire cores + light flow, glass orbs, stage floor, ivory dome) |
+| Post | `postprocessing` — Bloom (high threshold for emissives on a light bg), SMAA, soft Vignette |
+| Motion | Lenis smooth scroll, Framer Motion reveals, maath damping |
+| UI | React 19, Tailwind CSS, Italiana + Outfit (self-hosted via Fontsource) |
 | Build | Vite |
 
-Performance: capped DPR, additive shader materials with no per-frame geometry
-rebuilds, reduced particle counts + trimmed post chain on mobile, `prefers-reduced-motion`
-honored (camera cuts instead of flights).
+Performance: capped DPR, no per-frame geometry rebuilds, fewer particles on mobile,
+`prefers-reduced-motion` honored (native scroll, no intro dolly).
 
 ## Develop
 
@@ -43,13 +51,14 @@ npm run build    # production build → dist/
 npm run lint
 ```
 
-`scripts/probe.mjs` is a dev-only Playwright smoke test that boots the experience
-headlessly and screenshots each interaction state (`npm i --no-save playwright-core`).
+`scripts/probe.mjs` is a dev-only Playwright smoke test that loads the experience
+headlessly and screenshots each state (`npm i --no-save playwright-core`;
+`PROBE_MOBILE=1` for the mobile viewport).
 
 ## Credits
 
 - Head scan geometry: [Lee Perry-Smith](http://ir-ltd.net/) (Infinite Realities),
   CC-BY 3.0 — via the [three.js examples](https://github.com/mrdoob/three.js/tree/dev/examples/models/gltf/LeePerrySmith)
-- Fonts: Orbitron, Rajdhani, JetBrains Mono (self-hosted via Fontsource)
+- Fonts: Italiana, Outfit (Fontsource)
 
-Built by [Kanwal Boparai](https://github.com/KanwalBoparai).
+Designed & built by [Kanwal Boparai](https://github.com/KanwalBoparai).
