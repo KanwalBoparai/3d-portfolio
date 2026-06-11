@@ -8,7 +8,8 @@ import { makeShellMaterial, makeInnerSkullMaterial } from './head/materials'
 import Eyes from './head/Eyes'
 import BrainCore from './head/BrainCore'
 import Halo from './head/Halo'
-import LivingPhoto, { useHeroPhoto } from './head/LivingPhoto'
+import LivingPhoto from './head/LivingPhoto'
+import { useHeroPhoto } from './head/useHeroPhoto'
 
 const HEAD_URL = `${import.meta.env.BASE_URL}models/head.glb`
 
