@@ -1,11 +1,11 @@
 import * as THREE from 'three'
 import { SECTIONS } from '../data/content'
 
-export const HEAD_CENTER = new THREE.Vector3(0, 0.45, 0)
-export const HEAD_SCALE = 0.4
-export const HEAD_POS = [0, 0.35, 0]
+export const HEAD_CENTER = new THREE.Vector3(0, 0.55, 0)
+export const HEAD_SCALE = 0.46
+export const HEAD_POS = [0, 0.3, 0]
 
-export const IDLE_CAM = { desktop: new THREE.Vector3(0, 0.5, 7.2), mobile: new THREE.Vector3(0, 0.3, 9.4) }
+export const IDLE_CAM = { desktop: new THREE.Vector3(0, 0.55, 6.7), mobile: new THREE.Vector3(0, 0.4, 10.8) }
 
 export const nodePosition = (section, isMobile) =>
   new THREE.Vector3(...(isMobile ? section.mobilePosition : section.position))
@@ -40,9 +40,9 @@ export function buildCableCurve(section, isMobile) {
 
   // Sweep around the side of the head, staying behind the face plane
   const m2 = new THREE.Vector3(
-    sideSign * (2.25 + Math.abs(swirl) * 0.45),
-    0.75 + Math.abs(swirl) * 0.2,
-    -0.5
+    sideSign * (2.55 + Math.abs(swirl) * 0.4),
+    0.95 + Math.abs(swirl) * 0.2,
+    -0.55
   )
 
   // Glide down toward the node, easing forward only once clear of the head

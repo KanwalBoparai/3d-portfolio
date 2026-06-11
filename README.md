@@ -11,8 +11,14 @@ Luxury sci-fi, not cyberpunk: Apple-like cleanliness meets interactive art.
 
 ## Experience
 
-- **Living head** — slow rotation, cursor attention, breathing float, drag-to-rotate,
-  eye tracking; brain particles pulse when you engage a section
+- **The robot** — layered PBR construction: warm ceramic shell (clearcoat + sheen)
+  with zoned brushed-metal rear sections and a champagne machined collar, a gunmetal
+  inner skull visible through the open cranium, mechanical blade-iris eyes in gold
+  socket bezels that track the cursor and **blink**, a glass-domed brain core with
+  rotating micro-rings, circuit deck and orbiting energy arcs, and a floating gold
+  halo — lit by a procedural studio environment and a portrait light rig
+- **Living motion** — slow rotation, cursor attention, breathing float,
+  inertial drag-to-rotate; everything pulses when you engage a section
 - **Wires** — layered bronze strands with soft golden light packets flowing downward
 - **Glass nodes** — frosted orbs with hairline gold rings and side label stacks
 - **Cinematic page** — full-viewport 3D hero, preview card grid (01–05 + X), then
@@ -32,8 +38,8 @@ additional GitHub repos, experience (with locations), skills and education.
 
 | Layer | Stack |
 | --- | --- |
-| Rendering | Three.js + React Three Fiber + drei |
-| Shaders | Hand-written GLSL (porcelain shell with open-cranium discard, eyes, brain cloud, wire cores + light flow, glass orbs, stage floor, ivory dome) |
+| Rendering | Three.js + React Three Fiber + drei (procedural `Environment` light studio) |
+| Shaders | `MeshPhysicalMaterial` patched via `onBeforeCompile` (cranium discard, surface zoning, seams, rim emissive) + hand-written GLSL (iris blades, brain cloud, wire light flow, glass orbs, stage floor, ivory dome) |
 | Post | `postprocessing` — Bloom (high threshold for emissives on a light bg), SMAA, soft Vignette |
 | Motion | Lenis smooth scroll, Framer Motion reveals, maath damping |
 | UI | React 19, Tailwind CSS, Italiana + Outfit (self-hosted via Fontsource) |
