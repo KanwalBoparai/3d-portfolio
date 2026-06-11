@@ -56,7 +56,7 @@ export default function App() {
 
       {/* Content scrolls up over the stage */}
       <main className="relative z-10">
-        <div className="bg-gradient-to-b from-transparent via-cream/80 to-cream h-28 -mt-28 pointer-events-none" />
+        <div className="bg-gradient-to-b from-transparent via-cream/88 to-cream h-28 -mt-28 pointer-events-none" />
         <div className="bg-cream">
           <Cards />
           <Projects />

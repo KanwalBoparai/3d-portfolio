@@ -35,7 +35,7 @@ const floorFragment = /* glsl */ `
   }
 `
 
-// ── Sky dome: warm ivory gradient with the faintest champagne wash ───────────
+// ── Sky dome: cool command-room gradient with faint energy noise ─────────────
 const domeFragment = /* glsl */ `
   uniform float uTime;
   varying vec3 vDir;
@@ -44,11 +44,11 @@ const domeFragment = /* glsl */ `
   void main() {
     vec3 d = normalize(vDir);
     float h = d.y * 0.5 + 0.5;
-    vec3 col = mix(vec3(0.918, 0.886, 0.825), vec3(0.972, 0.957, 0.925), pow(h, 1.25));
-    // Soft warm halo behind and above the head
+    vec3 col = mix(vec3(0.018, 0.045, 0.055), vec3(0.055, 0.105, 0.118), pow(h, 1.25));
+    // Cool halo behind and above the head
     float halo = exp(-pow(length(d.xy - vec2(0.0, 0.18)) * 2.2, 2.0)) * step(0.0, d.z * -1.0 + 1.0);
-    col += vec3(0.055, 0.04, 0.012) * halo;
-    col += vec3(0.03, 0.022, 0.008) * fbm(d.xz * 2.2 + uTime * 0.004);
+    col += vec3(0.05, 0.16, 0.18) * halo;
+    col += vec3(0.02, 0.07, 0.075) * fbm(d.xz * 2.2 + uTime * 0.004);
     gl_FragColor = vec4(col, 1.0);
   }
 `
@@ -102,9 +102,9 @@ export default function EnvironmentFX() {
         />
       </mesh>
 
-      <ambientLight intensity={0.9} color="#fff7e8" />
-      <directionalLight position={[4, 6, 5]} intensity={1.1} color="#fff2d8" />
-      <directionalLight position={[-5, 2, -4]} intensity={0.45} color="#e8d9ff" />
+      <ambientLight intensity={0.45} color="#9eefff" />
+      <directionalLight position={[4, 6, 5]} intensity={1.3} color="#c8f8ff" />
+      <directionalLight position={[-5, 2, -4]} intensity={0.85} color="#ffcf74" />
     </group>
   )
 }

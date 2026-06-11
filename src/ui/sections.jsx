@@ -15,11 +15,11 @@ function SectionShell({ id, code, title, intro, children }) {
     <section id={id} className="max-w-7xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
       <motion.div {...reveal}>
         <div className="flex items-baseline gap-4">
-          <span className="font-body text-[11px] font-medium tracking-[0.35em] text-gold">{code}</span>
-          <span className="font-body text-[11px] font-medium tracking-[0.35em] text-stone">{title.toUpperCase()}</span>
+          <span className="font-body text-[11px] font-medium tracking-[0.35em] text-cyan">{code}</span>
+          <span className="font-body text-[11px] font-medium tracking-[0.35em] text-ivory/58">{title.toUpperCase()}</span>
           <span className="flex-1 rule" />
         </div>
-        <h2 className="mt-6 font-display text-5xl sm:text-6xl text-ink tracking-wide">{title}</h2>
+        <h2 className="mt-6 font-display text-5xl sm:text-6xl text-ivory tracking-wide">{title}</h2>
         {intro && (
           <p className="mt-4 font-body text-[15px] font-light leading-relaxed text-stone max-w-2xl">{intro}</p>
         )}
@@ -305,10 +305,10 @@ export function Contact() {
     <SectionShell id="contact" code="05" title="Contact">
       <div className="grid lg:grid-cols-2 gap-10 items-start">
         <motion.div {...reveal}>
-          <h3 className="font-display text-4xl sm:text-5xl text-ink leading-tight tracking-wide">
+          <h3 className="font-display text-4xl sm:text-5xl text-ivory leading-tight tracking-wide">
             Have a project in mind?
             <br />
-            Let’s build something <span className="text-gold">amazing</span>.
+            Let’s build something <span className="text-cyan">amazing</span>.
           </h3>
           <p className="mt-5 font-body text-[15px] font-light leading-relaxed text-stone max-w-md">
             Open to internships, collaborations and zero-to-one builds. Based in {profile.location} — happy to work
@@ -349,8 +349,8 @@ export function Footer() {
   return (
     <footer className="border-t border-hairline">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="font-display text-xl text-ink">
-          K<span className="text-gold">.</span>
+        <span className="font-display text-xl text-ivory">
+          K<span className="text-cyan">.</span>
         </span>
         <p className="font-body text-[11px] font-light tracking-[0.2em] text-stone text-center">
           DESIGNED & BUILT BY {profile.name.toUpperCase()} — REACT THREE FIBER · GLSL · {new Date().getFullYear()}

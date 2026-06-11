@@ -168,9 +168,9 @@ function ProceduralHead() {
       </group>
 
       {/* Portrait lighting rig — fixed in world space so the face stays lit */}
-      <directionalLight position={[2.2, 2.6, 4.2]} intensity={1.5} color="#fff1da" />
-      <directionalLight position={[-2.6, 2.8, -3.6]} intensity={1.6} color="#ffd9a0" />
-      <pointLight position={[-1.8, 0.3, 3.4]} intensity={0.55} color="#e9eeff" distance={9} />
+      <directionalLight position={[2.2, 2.6, 4.2]} intensity={1.8} color="#c8f8ff" />
+      <directionalLight position={[-2.6, 2.8, -3.6]} intensity={1.45} color="#ffcf74" />
+      <pointLight position={[-1.8, 0.3, 3.4]} intensity={0.85} color="#76e5ff" distance={9} />
     </>
   )
 }

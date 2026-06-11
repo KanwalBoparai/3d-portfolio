@@ -5,7 +5,7 @@ export const HEAD_CENTER = new THREE.Vector3(0, 0.55, 0)
 export const HEAD_SCALE = 0.46
 export const HEAD_POS = [0, 0.3, 0]
 
-export const IDLE_CAM = { desktop: new THREE.Vector3(0, 0.55, 6.7), mobile: new THREE.Vector3(0, 0.4, 10.8) }
+export const IDLE_CAM = { desktop: new THREE.Vector3(0, 0.55, 6.7), mobile: new THREE.Vector3(0, 0.72, 13.6) }
 
 export const nodePosition = (section, isMobile) =>
   new THREE.Vector3(...(isMobile ? section.mobilePosition : section.position))

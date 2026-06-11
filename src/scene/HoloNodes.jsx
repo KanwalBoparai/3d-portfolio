@@ -131,7 +131,7 @@ function HoloNode({ section }) {
               fontSize={0.165}
               letterSpacing={0.24}
               position={[labelX, side === 0 ? -0.78 : 0.12, 0]}
-              color="#2c2620"
+              color="#faf7f1"
               anchorX={anchorX}
               anchorY="middle"
             >
@@ -142,7 +142,7 @@ function HoloNode({ section }) {
               fontSize={0.105}
               letterSpacing={0.06}
               position={[labelX, side === 0 ? -0.97 : -0.08, 0]}
-              color="#6f6457"
+              color="#9db6bc"
               anchorX={anchorX}
               anchorY="middle"
             >
@@ -153,7 +153,7 @@ function HoloNode({ section }) {
               fontSize={0.095}
               letterSpacing={0.3}
               position={[labelX, side === 0 ? -1.16 : -0.28, 0]}
-              color="#b08d3e"
+              color="#76e5ff"
               anchorX={anchorX}
               anchorY="middle"
             >
