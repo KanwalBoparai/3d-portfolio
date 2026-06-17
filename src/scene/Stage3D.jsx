@@ -7,7 +7,7 @@ export default function Stage3D({ isMobile }) {
   return (
     <Canvas
       dpr={[1, isMobile ? 1.75 : 2]}
-      gl={{ antialias: false, powerPreference: 'high-performance', alpha: false }}
+      gl={{ antialias: false, powerPreference: 'high-performance', alpha: true }}
       camera={{ fov: 50, near: 0.1, far: 100, position: [0, 0.9, 10.8] }}
     >
       <SceneRoot />

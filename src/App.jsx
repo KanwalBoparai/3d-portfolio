@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useState } from 'react'
 import { useStore } from './store'
 import { initScroll } from './scroll'
 import StaticHero from './ui/StaticHero'
+import StatueHero from './ui/StatueHero'
 import LoadingScreen from './ui/LoadingScreen'
 import Navbar from './ui/Navbar'
 import Hero from './ui/Hero'
@@ -24,8 +25,9 @@ function webglAvailable() {
 
 export default function App() {
   const isMobile = useStore((s) => s.isMobile)
-  const reducedMotion = useStore((s) => s.reducedMotion)
   const [canRender3D, setCanRender3D] = useState(false)
+  // null = checking, true = statue image present (replaces the robot), false = robot
+  const [hasStatue, setHasStatue] = useState(null)
 
   useEffect(() => {
     const { setIsMobile, setReducedMotion, setReady } = useStore.getState()
@@ -39,8 +41,6 @@ export default function App() {
     mqMobile.addEventListener('change', syncMobile)
     mqMotion.addEventListener('change', syncMotion)
 
-    // Render the canvas only when motion is allowed AND WebGL exists; otherwise
-    // the static poster is the hero and we lift the loading veil immediately.
     const ok = !mqMotion.matches && webglAvailable()
     setCanRender3D(ok)
     if (!ok) setReady()
@@ -53,25 +53,44 @@ export default function App() {
     }
   }, [])
 
+  // Look for the marble-bust hero image. Present → it's the centerpiece and the
+  // 3D canvas is skipped entirely (clean, image-based hero). Absent → robot.
+  useEffect(() => {
+    let alive = true
+    fetch(`${import.meta.env.BASE_URL}hero/statue.png`, { method: 'HEAD' })
+      .then((r) => {
+        if (!alive) return
+        setHasStatue(r.ok)
+        if (r.ok) useStore.getState().setReady()
+      })
+      .catch(() => alive && setHasStatue(false))
+    return () => {
+      alive = false
+    }
+  }, [])
+
   return (
     <>
-      {/* Pinned stage — static poster first paint, 3D streams in over it */}
+      {/* Pinned stage — metallic poster + ghosted wordmark, then the hero subject */}
       <div className="fixed inset-0 z-0">
         <StaticHero />
-        {canRender3D && (
+        {hasStatue && <StatueHero />}
+        {canRender3D && hasStatue === false && (
           <div className="absolute inset-0">
             <Suspense fallback={null}>
               <Stage3D isMobile={isMobile} />
             </Suspense>
           </div>
         )}
+        {/* Bottom vignette — anchors the subject and keeps hero copy legible */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
       </div>
 
       <Navbar />
 
       {/* Hero copy — transparent window onto the stage */}
       <div className="relative z-10 h-screen pointer-events-none">
-        <Hero showDragHint={canRender3D && !reducedMotion} />
+        <Hero />
       </div>
 
       {/* Content scrolls up over the stage */}

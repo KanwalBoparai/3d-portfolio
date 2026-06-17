@@ -14,8 +14,10 @@ import { HEAD_POS } from './lib'
 //  • No file?  A clean procedural droid renders instead — the scene is never
 //    blank, and this doubles as the lightweight mobile / static fallback bot.
 //  • Alive: idle float + breathing, head/eyes track the cursor, drag to rotate,
-//    and a cyan glow-pulse surges on hover / click (shared via store.fx.pulse,
+//    and an orange glow-pulse surges on hover / click (shared via store.fx.pulse,
 //    so the bloom pass and section nodes react to the same energy value).
+//  • This is the FALLBACK hero: a marble-bust image at public/hero/statue.png
+//    takes over the stage (see StatueHero) and skips this canvas entirely.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ROBOT_URL = `${import.meta.env.BASE_URL}models/robot.glb`
@@ -23,13 +25,13 @@ const DRACO_PATH = `${import.meta.env.BASE_URL}draco/`
 const BOT_SCALE = 0.92
 const BASE_Y = HEAD_POS[1] + 0.18
 
-const ACCENT = new THREE.Color('#76e5ff') // holographic cyan
-const CERAMIC = '#eef4f6' // warm-cool white shell
-const CHROME = '#9fb3bb' // brushed metal trim
-const VISOR = '#070b0e' // glossy black visor glass
+const ACCENT = new THREE.Color('#ff7e2e') // flame orange (single accent)
+const CERAMIC = '#f0f0ef' // neutral white shell
+const CHROME = '#a9a9ad' // brushed metal trim
+const VISOR = '#0a0a0a' // glossy black visor glass
 
-// Probe for the optional GLB without throwing a 404 through Suspense — mirrors
-// the project's existing useHeroPhoto() drop-in convention.
+// Probe for the optional GLB without throwing a 404 through Suspense — the same
+// optional-asset drop-in convention used by the statue hero image.
 function useRobotSource() {
   const [src, setSrc] = useState('checking')
   useEffect(() => {
@@ -51,9 +53,9 @@ function GltfRobot() {
   return <primitive object={cloned} />
 }
 
-// A restrained, Apple-meets-sci-fi droid built from primitives. Emissive cyan
+// A restrained, Apple-meets-sci-fi droid built from primitives. Emissive orange
 // elements are toneMapped={false} so they punch past the bloom threshold (>1)
-// and read as self-lit holographic light.
+// and read as self-lit light.
 function ProceduralRobot({ glowRef }) {
   const eyeL = useRef()
   const eyeR = useRef()
@@ -252,10 +254,10 @@ export default function RobotAvatar() {
         </group>
       </group>
 
-      {/* Cool key + cyan rim lighting so the white shell reads cinematic */}
-      <directionalLight position={[2.4, 3.0, 4.0]} intensity={1.7} color="#dff6ff" />
-      <directionalLight position={[-3.0, 1.6, -2.6]} intensity={1.0} color="#3aa6c8" />
-      <pointLight position={[-1.6, 0.4, 3.2]} intensity={0.9} color="#76e5ff" distance={10} />
+      {/* Neutral key + warm rim so the white shell reads like grayscale stone */}
+      <directionalLight position={[2.4, 3.0, 4.0]} intensity={1.8} color="#ffffff" />
+      <directionalLight position={[-3.0, 1.6, -2.6]} intensity={0.9} color="#ff9a55" />
+      <pointLight position={[-1.6, 0.4, 3.2]} intensity={0.8} color="#ff7e2e" distance={10} />
     </>
   )
 }

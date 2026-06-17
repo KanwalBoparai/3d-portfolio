@@ -26,9 +26,9 @@ const dustFragment = /* glsl */ `
   void main() {
     float d = length(gl_PointCoord - 0.5);
     float a = smoothstep(0.5, 0.1, d);
-    // Mostly bright cyan sparks (bloom catches them), a few teal motes
-    vec3 col = mix(vec3(0.55, 0.92, 1.30), vec3(0.20, 0.62, 0.66), step(0.6, vSeed));
-    gl_FragColor = vec4(col, a * 0.38);
+    // Mostly soft white dust, a few orange embers (bloom catches the bright ones)
+    vec3 col = mix(vec3(1.25, 1.18, 1.08), vec3(1.50, 0.78, 0.34), step(0.78, vSeed));
+    gl_FragColor = vec4(col, a * 0.32);
   }
 `
 

@@ -24,7 +24,7 @@ export default function Cards() {
                 <span className="font-body text-[10px] font-medium tracking-[0.3em] text-cyan">{c.code}</span>
                 <span className="flex-1 rule" />
               </div>
-              <h3 className="mt-5 font-display text-3xl text-ivory tracking-wide">{c.title}</h3>
+              <h3 className="mt-5 font-display text-3xl font-bold tracking-tight text-ivory">{c.title}</h3>
               <p className="mt-3 font-body text-sm font-light leading-relaxed text-stone min-h-[3.5rem]">
                 {c.blurb}
               </p>

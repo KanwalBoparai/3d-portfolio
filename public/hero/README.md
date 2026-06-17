@@ -1,8 +1,10 @@
-# Hero portrait drop-in
+# Hero image drop-in
 
-Save your AI-generated robot-head image here as `robot.jpg`, `robot.png`
-or `robot.webp` and it automatically replaces the procedural 3D head with
-a living, glowing, parallax-animated portrait. Best results: front-facing
-head centered, cream/ivory background, landscape or square, ≥1280px wide.
+Save your hero render here as **`statue.png`** (exact lowercase name — hosts are
+case-sensitive). It becomes the hero centerpiece (a parallax marble-bust image),
+and the 3D canvas is skipped entirely for a clean, fast, image-based hero.
 
-No file here = the built-in procedural robot head renders instead.
+Best results: head-and-shoulders subject, centered, generous headroom, a neutral
+grey studio background, portrait ratio (4:5 / 3:4), ≥ 2000px tall, PNG.
+
+No `statue.png` here = the built-in React Three Fiber robot avatar renders instead.

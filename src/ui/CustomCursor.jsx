@@ -25,7 +25,7 @@ export default function CustomCursor() {
       if (ringRef.current) {
         const hovered = useStore.getState().hovered
         ringRef.current.style.transform = `translate(${ring.x}px, ${ring.y}px) scale(${hovered ? 1.55 : 1})`
-        ringRef.current.style.borderColor = hovered ? '#76e5ff' : 'rgba(118, 229, 255, 0.4)'
+        ringRef.current.style.borderColor = hovered ? '#ff7e2e' : 'rgba(255, 255, 255, 0.4)'
       }
       raf = requestAnimationFrame(loop)
     }

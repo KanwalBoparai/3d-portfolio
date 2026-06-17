@@ -22,7 +22,7 @@ function SectionShell({ id, code, title, intro, children }) {
           <span className="font-body text-[11px] font-medium tracking-[0.35em] text-ivory/58">{title.toUpperCase()}</span>
           <span className="flex-1 rule" />
         </div>
-        <h2 className="mt-6 font-display text-5xl sm:text-6xl text-ivory tracking-wide">{title}</h2>
+        <h2 className="mt-6 font-display text-6xl sm:text-7xl font-black uppercase tracking-tightest text-ivory">{title}</h2>
         {intro && (
           <p className="mt-4 font-body text-[15px] font-light leading-relaxed text-stone max-w-2xl">{intro}</p>
         )}
@@ -69,7 +69,7 @@ export function Projects() {
           >
             <div>
               <div className="flex flex-wrap items-center gap-4">
-                <h3 className="font-display text-3xl text-ivory tracking-wide">{p.name}</h3>
+                <h3 className="font-display text-3xl font-bold tracking-tight text-ivory">{p.name}</h3>
                 <Pill>{p.status}</Pill>
               </div>
               <p className="mt-4 font-body text-[15px] font-light leading-relaxed text-stone max-w-3xl">
@@ -139,7 +139,7 @@ export function Resume() {
       <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6">
         <motion.div {...reveal} className={`p-7 sm:p-9 ${GLASS}`}>
           <span className="font-body text-[10px] font-medium tracking-[0.35em] text-cyan">EDUCATION</span>
-          <h3 className="mt-4 font-display text-3xl text-ivory tracking-wide">{education.institution}</h3>
+          <h3 className="mt-4 font-display text-3xl font-bold tracking-tight text-ivory">{education.institution}</h3>
           <p className="mt-1 font-body text-[15px] text-stone">{education.degree}</p>
           <p className="mt-1 font-body text-[12px] font-light tracking-[0.15em] text-stone">{education.duration}</p>
           <ul className="mt-5 space-y-2">
@@ -162,7 +162,7 @@ export function Resume() {
           className={`p-7 sm:p-9 flex flex-col ${GLASS}`}
         >
           <span className="font-body text-[10px] font-medium tracking-[0.35em] text-cyan">FULL DOCUMENT</span>
-          <h3 className="mt-4 font-display text-3xl text-ivory tracking-wide">The PDF</h3>
+          <h3 className="mt-4 font-display text-3xl font-bold tracking-tight text-ivory">The PDF</h3>
           <p className="mt-3 font-body text-sm font-light leading-relaxed text-stone">
             The complete résumé — experience, projects, education and contact — in one page.
           </p>
@@ -209,7 +209,7 @@ export function Experience() {
           >
             <span className="absolute left-0 top-2 w-[11px] h-[11px] rounded-full border-2 border-cyan bg-graphite shadow-[0_0_10px_2px_rgba(118,229,255,0.5)]" />
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <h3 className="font-display text-2xl text-ivory tracking-wide">{e.company}</h3>
+              <h3 className="font-display text-2xl font-semibold tracking-tight text-ivory">{e.company}</h3>
               <span className="font-body text-sm text-stone">{e.title}</span>
             </div>
             <div className="mt-1 font-body text-[11px] font-medium tracking-[0.2em] text-cyan">
@@ -253,7 +253,7 @@ export function Skills() {
               transition={{ ...reveal.transition, delay: i * 0.06 }}
               className={`p-6 ${GLASS}`}
             >
-              <h3 className="font-display text-xl text-ivory tracking-wide">{c.category}</h3>
+              <h3 className="font-display text-xl font-semibold tracking-tight text-ivory">{c.category}</h3>
               <div className="mt-2 w-8 rule" />
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
                 {c.skills.map((s) => (
@@ -269,7 +269,7 @@ export function Skills() {
           transition={{ ...reveal.transition, delay: 0.15 }}
           className={`p-7 h-fit ${GLASS}`}
         >
-          <h3 className="font-display text-xl text-ivory tracking-wide">Signal strength</h3>
+          <h3 className="font-display text-xl font-semibold tracking-tight text-ivory">Signal strength</h3>
           <div className="mt-6 space-y-5">
             {proficiency.map((p) => (
               <div key={p.skill}>
@@ -308,7 +308,7 @@ export function Contact() {
     <SectionShell id="contact" code="05" title="Contact">
       <div className="grid lg:grid-cols-2 gap-10 items-start">
         <motion.div {...reveal}>
-          <h3 className="font-display text-4xl sm:text-5xl text-ivory leading-tight tracking-wide">
+          <h3 className="font-display text-4xl sm:text-5xl font-bold text-ivory leading-[1.05] tracking-tight">
             Have a project in mind?
             <br />
             Let’s build something <span className="text-cyan">amazing</span>.

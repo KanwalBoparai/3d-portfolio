@@ -15,10 +15,10 @@ html {
 body {
   font-family: 'Outfit', sans-serif;
   background:
-    radial-gradient(circle at 50% 12%, rgba(118, 229, 255, 0.16), transparent 32rem),
-    radial-gradient(circle at 78% 46%, rgba(176, 141, 62, 0.12), transparent 28rem),
-    #071116;
-  color: #faf7f1;
+    radial-gradient(circle at 50% 6%, rgba(255, 126, 46, 0.07), transparent 34rem),
+    radial-gradient(circle at 50% 34%, rgba(200, 202, 210, 0.05), transparent 40rem),
+    #16171a;
+  color: #ececee;
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -26,8 +26,8 @@ body {
 }
 
 ::selection {
-  background: rgba(118, 229, 255, 0.25);
-  color: #faf7f1;
+  background: rgba(255, 126, 46, 0.3);
+  color: #ffffff;
 }
 
 /* Custom crosshair cursor active only on precise pointers */
@@ -44,18 +44,18 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #071116;
+  background: #16171a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #28424b;
+  background: #34343a;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #76e5ff;
+  background: #ff7e2e;
 }
 
 /* Hairline divider helper */
 .rule {
   height: 1px;
-  background: linear-gradient(to right, rgba(118, 229, 255, 0.42), rgba(176, 141, 62, 0.18), transparent);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.28), rgba(255, 126, 46, 0.4), transparent);
 }

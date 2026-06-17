@@ -125,8 +125,8 @@ export const projects = [
     name: 'ApplyPilot',
     status: 'FLAGSHIP',
     description:
-      'Full-stack AI job-application platform. OpenRouter (Meta Llama 3.1 8B) drives resume parsing, tailored outreach-email generation, and application tracking, with structured-prompting pipelines that keep LLM output schema-conformant. Next.js 14 App Router on Neon serverless PostgreSQL, deployed on Vercel.',
-    tags: ['Next.js 14', 'TypeScript', 'Neon Postgres', 'OpenRouter LLM'],
+      'Full-stack AI job application platform with LLMs via OpenRouter (Llama 3.1) powering resume parsing, outreach email generation, and job tracking. Shipped a Chrome extension that scrapes job postings from any page and syncs in real time; structured-prompting pipelines for schema-conformant LLM outputs. Deployed serverlessly on Vercel.',
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'LLMs'],
     source: 'https://github.com/KanwalBoparai/ApplyPilot',
     live: null,
   },
@@ -134,25 +134,34 @@ export const projects = [
     name: 'Delegate AI',
     status: 'LIVE',
     description:
-      'Embeddable AI chat assistant that mounts on any website with a single script tag. A dependency-free vanilla JS/HTML/CSS widget talks to an OpenRouter-backed Node server; ⌘K summons it, ⌘M takes voice input, and a one-line embed loader makes it portable to any page.',
-    tags: ['JavaScript', 'Node.js', 'OpenRouter LLM', 'Embeddable Widget'],
+      'Voice-controlled Chrome extension that translates natural language into multi-step browser actions across any site using LLM-powered agent workflows. Architected the full-stack agent system with embeddings-based retrieval, structured prompting, and function calling; built RAG pipelines, guardrails, and an eval framework to reduce hallucinations and ensure safe, low-latency execution.',
+    tags: ['React', 'TypeScript', 'FastAPI', 'LLMs'],
     source: 'https://github.com/KanwalBoparai/delegate-ai-assistant',
     live: 'https://delegate-ai-assistant.vercel.app',
   },
   {
-    name: 'Potion',
-    status: 'MVP',
+    name: 'Patient Intake Portal',
+    status: 'LIVE',
     description:
-      'Proximity-based dating app for iOS + Android: see who is at the same venue right now, swap voice intros, and confirm “we met” IRL to unlock chat. A React Native + Expo monorepo over a Fastify / Prisma / PostgreSQL backend — Redis + Socket.io for realtime presence, BullMQ job queues, Twilio phone-OTP auth, S3 uploads, and RevenueCat billing.',
-    tags: ['React Native', 'Fastify', 'PostgreSQL', 'Socket.io'],
-    source: 'https://github.com/KanwalBoparai/Potion',
+      'Full-stack 3-step patient intake flow (demographics → documents → consent) with an operational admin dashboard. One React-Hook-Form + Zod schema validates every step; document uploads go to Vercel Blob over REST while patient data flows through a typed Apollo GraphQL API. Record atomicity is enforced via resolver-side Zod re-validation and Postgres NOT NULL/CHECK constraints, with records surfaced in Ag-Grid (sort, filter, in-app preview).',
+    tags: ['Next.js', 'GraphQL', 'Supabase', 'TypeScript'],
+    source: 'https://github.com/KanwalBoparai/Patient-Intake-Portal',
+    live: 'https://patient-intake-portal-seven.vercel.app',
+  },
+  {
+    name: 'Carpet Voice Agent',
+    status: 'OPEN SOURCE',
+    description:
+      'Outbound AI voice agent that calls customers about a promotion and books in-home appointments via an async Claude (Anthropic) tool-use loop with three live tools — Google Calendar availability/booking and Google Sheets CRM logging — over Vapi telephony (STT/TTS), with strict system-prompt guardrails and graceful degradation keeping it on-script and factual.',
+    tags: ['Python', 'FastAPI', 'Claude (Anthropic)', 'Vapi'],
+    source: 'https://github.com/KanwalBoparai/carpet-voice-agent',
     live: null,
   },
   {
     name: '3D Portfolio',
     status: 'YOU ARE HERE',
     description:
-      'This experience. A cinematic interactive 3D portfolio: a living robot avatar that tracks your cursor, breathes on idle, and pulses with cyan light on interaction, over a holographic particle field. React Three Fiber, GLSL shaders, Draco-compressed models, bloom post-processing, and smooth Lenis scroll — with a static fallback and reduced-motion path.',
+      'This experience — a bold editorial portfolio with a marble-bust hero, giant kinetic typography, and a React Three Fiber scene (Draco-ready avatar) as an interactive fallback. Lazy-loaded behind a static poster with a reduced-motion path; designed every layout and transition by hand.',
     tags: ['React Three Fiber', 'Three.js', 'GLSL', 'Tailwind'],
     source: 'https://github.com/KanwalBoparai/3d-portfolio',
     live: 'https://kanwalboparai.github.io/3d-portfolio/',
@@ -161,8 +170,7 @@ export const projects = [
 
 // Additional public repos — pulled from github.com/KanwalBoparai (June 2026)
 export const githubRepos = [
-  { name: 'Patient-Intake-Portal', language: 'TypeScript', year: '2026', note: 'Next.js · GraphQL · Supabase intake portal (deployed)', url: 'https://github.com/KanwalBoparai/Patient-Intake-Portal' },
-  { name: 'carpet-voice-agent', language: 'Python', year: '2026', note: 'AI voice agent · Claude tool-use · Vapi telephony', url: 'https://github.com/KanwalBoparai/carpet-voice-agent' },
+  { name: 'Potion', language: 'TypeScript', year: '2026', note: 'React Native + Expo · Fastify/Prisma proximity app', url: 'https://github.com/KanwalBoparai/Potion' },
   { name: 'Recipe-website-2023', language: 'JavaScript', year: '2023', note: 'Early React web build', url: 'https://github.com/KanwalBoparai/Recipe-website-2023' },
   { name: 'Python-Game', language: 'Python', year: '2023', note: 'Early game build', url: 'https://github.com/KanwalBoparai/Python-Game' },
 ]
@@ -229,22 +237,23 @@ export const skillCategories = [
   },
   {
     category: 'Frontend',
-    skills: ['React', 'Next.js', 'Tailwind CSS', 'Three.js / React Three Fiber', 'Framer Motion', 'Figma'],
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'shadcn/ui', 'Three.js / React Three Fiber', 'Framer Motion', 'React Hook Form', 'Zod', 'Ag-Grid', 'Figma'],
   },
   {
     category: 'Backend & Data',
-    skills: ['Node.js', 'FastAPI', 'RESTful APIs', 'JWT Auth', 'PostgreSQL', 'AWS', 'GCP', 'Vercel'],
+    skills: ['Node.js', 'FastAPI', 'GraphQL (Apollo)', 'RESTful APIs', 'JWT Auth', 'PostgreSQL', 'Supabase', 'SQLite', 'SQLAlchemy', 'Vercel Blob', 'Google Calendar/Sheets APIs', 'AWS', 'GCP', 'Vercel'],
   },
   {
     category: 'AI / LLMs',
     skills: [
-      'OpenAI & Anthropic APIs', 'Claude Code', 'OpenRouter', 'Hugging Face', 'LangChain',
-      'Prompt Engineering', 'Structured Outputs', 'Function Calling', 'RAG', 'AI Agents', 'Evals & Guardrails',
+      'OpenAI & Anthropic APIs', 'Claude Code', 'OpenRouter', 'Vapi (Voice Agents)', 'Speech-to-Text / Text-to-Speech',
+      'Hugging Face', 'LangChain', 'Prompt Engineering', 'Structured Outputs', 'Function Calling & Tool Use',
+      'RAG', 'AI Agents', 'Evals & Guardrails',
     ],
   },
   {
     category: 'DevOps & Tooling',
-    skills: ['Git', 'GitHub Actions (CI/CD)', 'Codespaces', 'Jest', 'React Testing Library', 'Postman', 'Agile/Scrum'],
+    skills: ['Git', 'GitHub Actions (CI/CD)', 'Codespaces', 'Jest', 'React Testing Library', 'Postman', 'pnpm', 'Agile/Scrum'],
   },
 ]
 
