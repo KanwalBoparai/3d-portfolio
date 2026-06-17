@@ -25,10 +25,16 @@ export default function StaticHero() {
         }}
       />
 
-      {/* GIANT ghosted wordmark — spans the width, behind the subject */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-[55%] flex justify-center">
+      {/* GIANT ghosted wordmark — KANWAL kicker left-aligned to where BOPARAI starts */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%] flex flex-col items-start">
         <span
-          className="select-none whitespace-nowrap font-display font-black uppercase leading-none text-white/[0.05]"
+          className="ml-5 select-none whitespace-nowrap font-display font-black uppercase leading-none text-white/[0.05] sm:ml-12"
+          style={{ fontSize: 'clamp(2.4rem, 8vw, 7.5rem)', letterSpacing: '-0.03em' }}
+        >
+          Kanwal
+        </span>
+        <span
+          className="-mt-2 select-none whitespace-nowrap font-display font-black uppercase leading-none text-white/[0.05] sm:-mt-4"
           style={{ fontSize: 'clamp(7rem, 24vw, 24rem)', letterSpacing: '-0.04em' }}
         >
           Boparai

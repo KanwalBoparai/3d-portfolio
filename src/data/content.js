@@ -15,7 +15,7 @@ export const profile = {
   linkedin: 'https://linkedin.com/in/kgsbopar',
   summary:
     'Full-stack engineer and founder shipping production AI products. Computer Science at Waterloo (CS ’27). Comfortable across TypeScript, Python, LLMs, and the modern web stack; bias toward ownership and zero-to-one builds.',
-  resumeFile: 'resume.pdf', // drop your PDF at public/resume.pdf
+  resumeFile: 'Kanwal_Boparai_Resume.pdf', // lives at public/Kanwal_Boparai_Resume.pdf
 }
 
 // Section nodes — id, display, luxe accent, where the node floats (world units,
