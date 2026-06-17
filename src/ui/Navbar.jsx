@@ -20,10 +20,10 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-10 h-16">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-display text-2xl tracking-wide text-ink"
+          className="font-display text-2xl tracking-wide text-ivory"
           aria-label="Back to top"
         >
-          K<span className="text-gold">.</span>
+          K<span className="text-cyan">.</span>
         </button>
 
         <div className="hidden md:flex items-center gap-8">
@@ -31,7 +31,7 @@ export default function Navbar() {
             <button
               key={s.id}
               onClick={() => scrollToSection(s.id)}
-              className="font-body text-[11px] font-medium tracking-[0.22em] text-stone hover:text-ink transition-colors"
+              className="font-body text-[11px] font-medium tracking-[0.22em] text-stone hover:text-cyan transition-colors"
             >
               {s.label}
             </button>
@@ -40,7 +40,7 @@ export default function Navbar() {
 
         <a
           href={`mailto:${profile.email}`}
-          className="font-body text-[11px] font-medium tracking-[0.22em] text-gold border border-gold/40 rounded-full px-4 py-1.5 hover:bg-gold hover:text-ivory transition-all duration-300"
+          className="font-body text-[11px] font-medium tracking-[0.22em] text-cyan border border-cyan/40 rounded-full px-4 py-1.5 hover:bg-cyan hover:text-ink transition-all duration-300"
         >
           HIRE ME
         </a>

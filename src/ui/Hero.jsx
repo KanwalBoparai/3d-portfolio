@@ -10,7 +10,7 @@ const fadeUp = (delay) => ({
   transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
-export default function Hero() {
+export default function Hero({ showDragHint = true }) {
   const ready = useStore((s) => s.ready)
   if (!ready) return null
 
@@ -49,14 +49,16 @@ export default function Hero() {
         </motion.button>
       </div>
 
-      {/* Drag hint — lower right */}
-      <motion.div
-        {...fadeUp(1.5)}
-        className="absolute right-6 sm:right-10 lg:right-16 bottom-[9vh] hidden md:flex items-center gap-2 font-body text-[10px] font-medium tracking-[0.3em] text-ivory/54"
-      >
-        DRAG TO ROTATE
-        <span className="text-cyan text-sm">⟲</span>
-      </motion.div>
+      {/* Drag hint — lower right (only when the canvas is interactive) */}
+      {showDragHint && (
+        <motion.div
+          {...fadeUp(1.5)}
+          className="absolute right-6 sm:right-10 lg:right-16 bottom-[9vh] hidden md:flex items-center gap-2 font-body text-[10px] font-medium tracking-[0.3em] text-ivory/54"
+        >
+          DRAG TO ROTATE
+          <span className="text-cyan text-sm">⟲</span>
+        </motion.div>
+      )}
 
       {/* Scroll cue — bottom center */}
       <motion.div

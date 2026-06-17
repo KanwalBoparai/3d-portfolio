@@ -122,29 +122,38 @@ export const cards = [
 
 export const projects = [
   {
-    name: 'Delegate-AI',
+    name: 'ApplyPilot',
+    status: 'FLAGSHIP',
+    description:
+      'Full-stack AI job-application platform. OpenRouter (Meta Llama 3.1 8B) drives resume parsing, tailored outreach-email generation, and application tracking, with structured-prompting pipelines that keep LLM output schema-conformant. Next.js 14 App Router on Neon serverless PostgreSQL, deployed on Vercel.',
+    tags: ['Next.js 14', 'TypeScript', 'Neon Postgres', 'OpenRouter LLM'],
+    source: 'https://github.com/KanwalBoparai/ApplyPilot',
+    live: null,
+  },
+  {
+    name: 'Delegate AI',
     status: 'LIVE',
     description:
-      'Voice-controlled Chrome extension that translates natural language into multi-step browser actions across any site using LLM-powered agent workflows. Architected the full-stack agent system with embeddings-based retrieval, structured prompting and function calling; built RAG pipelines, guardrails and an eval framework to reduce hallucinations and ensure safe, low-latency execution.',
-    tags: ['React', 'TypeScript', 'FastAPI', 'LLMs'],
+      'Embeddable AI chat assistant that mounts on any website with a single script tag. A dependency-free vanilla JS/HTML/CSS widget talks to an OpenRouter-backed Node server; ⌘K summons it, ⌘M takes voice input, and a one-line embed loader makes it portable to any page.',
+    tags: ['JavaScript', 'Node.js', 'OpenRouter LLM', 'Embeddable Widget'],
     source: 'https://github.com/KanwalBoparai/delegate-ai-assistant',
     live: 'https://delegate-ai-assistant.vercel.app',
   },
   {
-    name: 'ApplyPilot',
-    status: 'SHIPPED',
+    name: 'Potion',
+    status: 'MVP',
     description:
-      'Full-stack AI job application platform with LLMs via OpenRouter (Llama 3.1) powering resume parsing, outreach email generation and job tracking. Shipped a Chrome extension that scrapes job postings from any page and syncs in real time; structured-prompting pipelines for schema-conformant LLM outputs. Deployed serverlessly on Vercel.',
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'LLMs'],
-    source: 'https://github.com/KanwalBoparai/ApplyPilot',
+      'Proximity-based dating app for iOS + Android: see who is at the same venue right now, swap voice intros, and confirm “we met” IRL to unlock chat. A React Native + Expo monorepo over a Fastify / Prisma / PostgreSQL backend — Redis + Socket.io for realtime presence, BullMQ job queues, Twilio phone-OTP auth, S3 uploads, and RevenueCat billing.',
+    tags: ['React Native', 'Fastify', 'PostgreSQL', 'Socket.io'],
+    source: 'https://github.com/KanwalBoparai/Potion',
     live: null,
   },
   {
     name: '3D Portfolio',
     status: 'YOU ARE HERE',
     description:
-      'This experience. A cinematic interactive 3D portfolio: an elegant robot mind with an exposed glowing brain, eyes that follow your cursor, and luminous wires flowing down into each section. Hand-written GLSL shaders, smooth scroll and post-processing — every layout and transition designed by hand.',
-    tags: ['React', 'Three.js', 'React Three Fiber', 'Tailwind'],
+      'This experience. A cinematic interactive 3D portfolio: a living robot avatar that tracks your cursor, breathes on idle, and pulses with cyan light on interaction, over a holographic particle field. React Three Fiber, GLSL shaders, Draco-compressed models, bloom post-processing, and smooth Lenis scroll — with a static fallback and reduced-motion path.',
+    tags: ['React Three Fiber', 'Three.js', 'GLSL', 'Tailwind'],
     source: 'https://github.com/KanwalBoparai/3d-portfolio',
     live: 'https://kanwalboparai.github.io/3d-portfolio/',
   },
@@ -152,9 +161,9 @@ export const projects = [
 
 // Additional public repos — pulled from github.com/KanwalBoparai (June 2026)
 export const githubRepos = [
-  { name: 'carpet-voice-agent', language: 'Python', year: '2026', note: 'Voice-agent build', url: 'https://github.com/KanwalBoparai/carpet-voice-agent' },
-  { name: 'Potion', language: 'TypeScript', year: '2026', note: 'Workspace app build', url: 'https://github.com/KanwalBoparai/Potion' },
-  { name: 'Recipe-website-2023', language: 'JavaScript', year: '2023', note: 'Early web build', url: 'https://github.com/KanwalBoparai/Recipe-website-2023' },
+  { name: 'Patient-Intake-Portal', language: 'TypeScript', year: '2026', note: 'Next.js · GraphQL · Supabase intake portal (deployed)', url: 'https://github.com/KanwalBoparai/Patient-Intake-Portal' },
+  { name: 'carpet-voice-agent', language: 'Python', year: '2026', note: 'AI voice agent · Claude tool-use · Vapi telephony', url: 'https://github.com/KanwalBoparai/carpet-voice-agent' },
+  { name: 'Recipe-website-2023', language: 'JavaScript', year: '2023', note: 'Early React web build', url: 'https://github.com/KanwalBoparai/Recipe-website-2023' },
   { name: 'Python-Game', language: 'Python', year: '2023', note: 'Early game build', url: 'https://github.com/KanwalBoparai/Python-Game' },
 ]
 

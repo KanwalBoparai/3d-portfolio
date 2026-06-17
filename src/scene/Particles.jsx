@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useStore } from '../store'
 
-// Champagne dust — fine motes drifting up through the warm light
+// Holographic motes — fine sparks drifting up through the cyan glow
 const dustVertex = /* glsl */ `
   attribute float aSeed;
   uniform float uTime;
@@ -26,9 +26,9 @@ const dustFragment = /* glsl */ `
   void main() {
     float d = length(gl_PointCoord - 0.5);
     float a = smoothstep(0.5, 0.1, d);
-    // Mostly soft gold sparks (bloom catches the bright ones), a few bronze motes
-    vec3 col = mix(vec3(1.5, 1.18, 0.62), vec3(0.62, 0.50, 0.34), step(0.6, vSeed));
-    gl_FragColor = vec4(col, a * 0.4);
+    // Mostly bright cyan sparks (bloom catches them), a few teal motes
+    vec3 col = mix(vec3(0.55, 0.92, 1.30), vec3(0.20, 0.62, 0.66), step(0.6, vSeed));
+    gl_FragColor = vec4(col, a * 0.38);
   }
 `
 

@@ -41,10 +41,10 @@ const orbFragment = /* glsl */ `
 
     // Specular crescent up-left, like blown glass
     float hi = smoothstep(0.26, 0.0, length(p - vec2(-0.14, 0.16)));
-    col += vec3(0.6, 0.54, 0.4) * hi * 0.55;
+    col += vec3(0.42, 0.52, 0.6) * hi * 0.55;
     alpha += hi * 0.25;
 
-    vec3 gold = vec3(1.45, 1.08, 0.50);
+    vec3 gold = vec3(0.46, 0.92, 1.32); // holographic cyan (named 'gold' for diff brevity)
 
     // Gold outer ring + drifting dashed ring
     float outer = ring(d, 0.455, 0.010);

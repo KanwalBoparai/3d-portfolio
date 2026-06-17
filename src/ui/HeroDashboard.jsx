@@ -13,7 +13,7 @@ const compactSkills = proficiency.slice(0, 4)
 function StatusDot({ active = true }) {
   return (
     <span
-      className={`h-1.5 w-1.5 rounded-full ${active ? 'bg-cyan' : 'bg-gold'} shadow-[0_0_14px_currentColor]`}
+      className={`h-1.5 w-1.5 rounded-full ${active ? 'bg-cyan' : 'bg-stone'} shadow-[0_0_14px_currentColor]`}
     />
   )
 }
@@ -47,11 +47,11 @@ export default function HeroDashboard() {
                 <span className="font-body text-xs font-medium tracking-[0.16em] text-ivory">
                   {project.name.toUpperCase()}
                 </span>
-                <span className="font-body text-[10px] tracking-[0.18em] text-gold">{project.status}</span>
+                <span className="font-body text-[10px] tracking-[0.18em] text-cyan">{project.status}</span>
               </div>
               <div className="mt-2 h-px bg-ivory/10">
                 <motion.div
-                  className="h-px bg-gradient-to-r from-cyan to-gold"
+                  className="h-px bg-gradient-to-r from-cyan to-aqua"
                   initial={{ width: 0 }}
                   animate={{ width: `${92 - index * 12}%` }}
                   transition={{ duration: 1.3, delay: 1.25 + index * 0.14, ease: 'easeOut' }}
@@ -69,11 +69,11 @@ export default function HeroDashboard() {
         </div>
         <div className="mt-5 grid grid-cols-2 gap-3">
           <div className="rounded-md border border-ivory/10 bg-ivory/[0.035] p-3">
-            <div className="font-body text-[10px] tracking-[0.22em] text-gold">FOCUS</div>
+            <div className="font-body text-[10px] tracking-[0.22em] text-cyan">FOCUS</div>
             <div className="mt-2 font-display text-3xl tracking-wide text-ivory">AI</div>
           </div>
           <div className="rounded-md border border-ivory/10 bg-ivory/[0.035] p-3">
-            <div className="font-body text-[10px] tracking-[0.22em] text-gold">BASE</div>
+            <div className="font-body text-[10px] tracking-[0.22em] text-cyan">BASE</div>
             <div className="mt-2 font-display text-3xl tracking-wide text-ivory">UW</div>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function HeroDashboard() {
               <span className="font-body text-[10px] tracking-[0.18em] text-cyan">{skill.level}%</span>
               <div className="col-span-2 h-1 overflow-hidden rounded-full bg-ivory/10">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-cyan via-aqua to-gold"
+                  className="h-full rounded-full bg-gradient-to-r from-cyan via-aqua to-cyan"
                   initial={{ width: 0 }}
                   animate={{ width: `${skill.level}%` }}
                   transition={{ duration: 1.25, delay: 1.36, ease: 'easeOut' }}
@@ -113,7 +113,7 @@ export default function HeroDashboard() {
         transition={{ delay: 0.9, duration: 1.2 }}
         className="absolute left-1/2 top-[50%] hidden h-[54vh] w-[54vh] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan/10 lg:block"
       >
-        <div className="absolute inset-7 rounded-full border border-gold/10" />
+        <div className="absolute inset-7 rounded-full border border-cyan/10" />
         <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan/20 to-transparent" />
         <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-gradient-to-r from-transparent via-cyan/20 to-transparent" />
       </motion.div>

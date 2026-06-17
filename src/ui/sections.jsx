@@ -10,6 +10,9 @@ const reveal = {
   transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
 }
 
+// Dark glass panel — the shared surface for every card on the cinematic body.
+const GLASS = 'bg-white/[0.035] border border-hairline rounded-2xl backdrop-blur-sm shadow-neon'
+
 function SectionShell({ id, code, title, intro, children }) {
   return (
     <section id={id} className="max-w-7xl mx-auto px-6 sm:px-10 py-24 sm:py-32">
@@ -30,7 +33,7 @@ function SectionShell({ id, code, title, intro, children }) {
 }
 
 const Pill = ({ children }) => (
-  <span className="font-body text-[10px] font-medium tracking-[0.2em] text-gold border border-gold/35 rounded-full px-3 py-1">
+  <span className="font-body text-[10px] font-medium tracking-[0.2em] text-cyan border border-cyan/35 rounded-full px-3 py-1">
     {children}
   </span>
 )
@@ -40,7 +43,7 @@ const Arrow = ({ href, children }) => (
     href={href}
     target="_blank"
     rel="noreferrer"
-    className="group/link inline-flex items-center gap-2 font-body text-[11px] font-medium tracking-[0.25em] text-ink hover:text-gold transition-colors"
+    className="group/link inline-flex items-center gap-2 font-body text-[11px] font-medium tracking-[0.25em] text-ivory hover:text-cyan transition-colors"
   >
     {children}
     <span className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5">↗</span>
@@ -62,11 +65,11 @@ export function Projects() {
             key={p.name}
             {...reveal}
             transition={{ ...reveal.transition, delay: i * 0.08 }}
-            className="group grid lg:grid-cols-[1fr_auto] gap-6 bg-ivory/70 border border-hairline rounded-2xl p-7 sm:p-9 shadow-lift hover:shadow-lift-lg transition-shadow duration-500"
+            className={`group grid lg:grid-cols-[1fr_auto] gap-6 p-7 sm:p-9 transition-colors duration-500 hover:border-cyan/40 ${GLASS}`}
           >
             <div>
               <div className="flex flex-wrap items-center gap-4">
-                <h3 className="font-display text-3xl text-ink tracking-wide">{p.name}</h3>
+                <h3 className="font-display text-3xl text-ivory tracking-wide">{p.name}</h3>
                 <Pill>{p.status}</Pill>
               </div>
               <p className="mt-4 font-body text-[15px] font-light leading-relaxed text-stone max-w-3xl">
@@ -75,7 +78,7 @@ export function Projects() {
               <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
                 {p.tags.map((t) => (
                   <span key={t} className="font-body text-[11px] font-medium tracking-[0.18em] text-stone">
-                    <span className="text-gold mr-1.5">·</span>
+                    <span className="text-cyan mr-1.5">·</span>
                     {t.toUpperCase()}
                   </span>
                 ))}
@@ -102,13 +105,13 @@ export function Projects() {
               href={r.url}
               target="_blank"
               rel="noreferrer"
-              className="group bg-ivory/60 border border-hairline rounded-xl p-5 hover:border-gold/50 hover:-translate-y-0.5 transition-all duration-300"
+              className="group bg-white/[0.025] border border-hairline rounded-xl p-5 hover:border-cyan/50 hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex items-center justify-between">
-                <span className="font-body text-sm font-medium text-ink group-hover:text-gold transition-colors">
+                <span className="font-body text-sm font-medium text-ivory group-hover:text-cyan transition-colors">
                   {r.name}
                 </span>
-                <span className="text-gold">↗</span>
+                <span className="text-cyan">↗</span>
               </div>
               <div className="mt-2 font-body text-[11px] font-light tracking-[0.12em] text-stone">
                 {r.note} · {r.language} · {r.year}
@@ -134,21 +137,21 @@ export function Resume() {
       intro={profile.summary}
     >
       <div className="grid lg:grid-cols-[1.2fr_1fr] gap-6">
-        <motion.div {...reveal} className="bg-ivory/70 border border-hairline rounded-2xl p-7 sm:p-9 shadow-lift">
-          <span className="font-body text-[10px] font-medium tracking-[0.35em] text-gold">EDUCATION</span>
-          <h3 className="mt-4 font-display text-3xl text-ink tracking-wide">{education.institution}</h3>
+        <motion.div {...reveal} className={`p-7 sm:p-9 ${GLASS}`}>
+          <span className="font-body text-[10px] font-medium tracking-[0.35em] text-cyan">EDUCATION</span>
+          <h3 className="mt-4 font-display text-3xl text-ivory tracking-wide">{education.institution}</h3>
           <p className="mt-1 font-body text-[15px] text-stone">{education.degree}</p>
           <p className="mt-1 font-body text-[12px] font-light tracking-[0.15em] text-stone">{education.duration}</p>
           <ul className="mt-5 space-y-2">
             {education.achievements.map((a) => (
               <li key={a} className="font-body text-sm font-light text-stone flex gap-3">
-                <span className="text-gold">◆</span>
+                <span className="text-cyan">◆</span>
                 {a}
               </li>
             ))}
           </ul>
           <p className="mt-5 font-body text-[13px] font-light leading-relaxed text-stone">
-            <span className="font-medium tracking-[0.2em] text-[10px] text-gold mr-2">COURSEWORK</span>
+            <span className="font-medium tracking-[0.2em] text-[10px] text-cyan mr-2">COURSEWORK</span>
             {education.coursework}
           </p>
         </motion.div>
@@ -156,10 +159,10 @@ export function Resume() {
         <motion.div
           {...reveal}
           transition={{ ...reveal.transition, delay: 0.1 }}
-          className="bg-ivory/70 border border-hairline rounded-2xl p-7 sm:p-9 shadow-lift flex flex-col"
+          className={`p-7 sm:p-9 flex flex-col ${GLASS}`}
         >
-          <span className="font-body text-[10px] font-medium tracking-[0.35em] text-gold">FULL DOCUMENT</span>
-          <h3 className="mt-4 font-display text-3xl text-ink tracking-wide">The PDF</h3>
+          <span className="font-body text-[10px] font-medium tracking-[0.35em] text-cyan">FULL DOCUMENT</span>
+          <h3 className="mt-4 font-display text-3xl text-ivory tracking-wide">The PDF</h3>
           <p className="mt-3 font-body text-sm font-light leading-relaxed text-stone">
             The complete résumé — experience, projects, education and contact — in one page.
           </p>
@@ -168,7 +171,7 @@ export function Resume() {
               href={`./${profile.resumeFile}`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-ink text-ivory rounded-full px-7 py-3 font-body text-[11px] font-medium tracking-[0.25em] hover:bg-gold transition-colors duration-300"
+              className="inline-flex items-center gap-3 bg-cyan text-ink rounded-full px-7 py-3 font-body text-[11px] font-medium tracking-[0.25em] hover:bg-aqua transition-colors duration-300"
             >
               VIEW RESUME ↓
             </a>
@@ -176,7 +179,7 @@ export function Resume() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-ink/20 rounded-full px-7 py-3 font-body text-[11px] font-medium tracking-[0.25em] text-ink hover:border-gold hover:text-gold transition-colors duration-300"
+              className="inline-flex items-center gap-2 border border-cyan/30 rounded-full px-7 py-3 font-body text-[11px] font-medium tracking-[0.25em] text-ivory hover:border-cyan hover:text-cyan transition-colors duration-300"
             >
               LINKEDIN ↗
             </a>
@@ -204,18 +207,18 @@ export function Experience() {
             transition={{ ...reveal.transition, delay: i * 0.06 }}
             className="relative pl-10"
           >
-            <span className="absolute left-0 top-2 w-[11px] h-[11px] rounded-full border-2 border-gold bg-ivory" />
+            <span className="absolute left-0 top-2 w-[11px] h-[11px] rounded-full border-2 border-cyan bg-graphite shadow-[0_0_10px_2px_rgba(118,229,255,0.5)]" />
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-              <h3 className="font-display text-2xl text-ink tracking-wide">{e.company}</h3>
+              <h3 className="font-display text-2xl text-ivory tracking-wide">{e.company}</h3>
               <span className="font-body text-sm text-stone">{e.title}</span>
             </div>
-            <div className="mt-1 font-body text-[11px] font-medium tracking-[0.2em] text-gold">
+            <div className="mt-1 font-body text-[11px] font-medium tracking-[0.2em] text-cyan">
               {e.date.toUpperCase()} <span className="text-stone font-light">— {e.location.toUpperCase()}</span>
             </div>
             <ul className="mt-3 space-y-2 max-w-3xl">
               {e.points.map((pt, j) => (
                 <li key={j} className="font-body text-sm font-light leading-relaxed text-stone flex gap-3">
-                  <span className="text-gold/70 shrink-0 mt-0.5">—</span>
+                  <span className="text-cyan/70 shrink-0 mt-0.5">—</span>
                   {pt}
                 </li>
               ))}
@@ -248,9 +251,9 @@ export function Skills() {
               key={c.category}
               {...reveal}
               transition={{ ...reveal.transition, delay: i * 0.06 }}
-              className="bg-ivory/70 border border-hairline rounded-2xl p-6 shadow-lift"
+              className={`p-6 ${GLASS}`}
             >
-              <h3 className="font-display text-xl text-ink tracking-wide">{c.category}</h3>
+              <h3 className="font-display text-xl text-ivory tracking-wide">{c.category}</h3>
               <div className="mt-2 w-8 rule" />
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
                 {c.skills.map((s) => (
@@ -264,23 +267,23 @@ export function Skills() {
         <motion.div
           {...reveal}
           transition={{ ...reveal.transition, delay: 0.15 }}
-          className="bg-ivory/70 border border-hairline rounded-2xl p-7 shadow-lift h-fit"
+          className={`p-7 h-fit ${GLASS}`}
         >
-          <h3 className="font-display text-xl text-ink tracking-wide">Signal strength</h3>
+          <h3 className="font-display text-xl text-ivory tracking-wide">Signal strength</h3>
           <div className="mt-6 space-y-5">
             {proficiency.map((p) => (
               <div key={p.skill}>
                 <div className="flex justify-between font-body text-[11px] font-medium tracking-[0.18em] text-stone">
                   <span>{p.skill.toUpperCase()}</span>
-                  <span className="text-gold">{p.level}</span>
+                  <span className="text-cyan">{p.level}</span>
                 </div>
-                <div className="mt-1.5 h-px bg-ink/10 relative">
+                <div className="mt-1.5 h-px bg-ivory/10 relative">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${p.level}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.1, ease: 'easeOut', delay: 0.2 }}
-                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-gold to-goldsoft"
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyan to-aqua shadow-[0_0_8px_1px_rgba(118,229,255,0.5)]"
                     style={{ height: 2, top: -0.5 }}
                   />
                 </div>
@@ -316,7 +319,7 @@ export function Contact() {
           </p>
           <a
             href={`mailto:${profile.email}`}
-            className="mt-8 inline-flex items-center gap-3 bg-ink text-ivory rounded-full px-8 py-4 font-body text-[11px] font-medium tracking-[0.3em] hover:bg-gold transition-colors duration-300"
+            className="mt-8 inline-flex items-center gap-3 bg-cyan text-ink rounded-full px-8 py-4 font-body text-[11px] font-medium tracking-[0.3em] hover:bg-aqua transition-colors duration-300"
           >
             GET IN TOUCH →
           </a>
@@ -329,13 +332,13 @@ export function Contact() {
               href={r.href}
               target={r.href.startsWith('http') ? '_blank' : undefined}
               rel="noreferrer"
-              className="group flex items-baseline gap-5 bg-ivory/70 border border-hairline rounded-xl px-6 py-4 hover:border-gold/50 transition-colors duration-300"
+              className="group flex items-baseline gap-5 bg-white/[0.035] border border-hairline rounded-xl px-6 py-4 hover:border-cyan/50 transition-colors duration-300"
             >
-              <span className="font-body text-[10px] font-medium tracking-[0.3em] text-gold w-20 shrink-0">{r.k}</span>
-              <span className="font-body text-sm font-light text-stone group-hover:text-ink transition-colors break-all">
+              <span className="font-body text-[10px] font-medium tracking-[0.3em] text-cyan w-20 shrink-0">{r.k}</span>
+              <span className="font-body text-sm font-light text-stone group-hover:text-ivory transition-colors break-all">
                 {r.v}
               </span>
-              <span className="ml-auto text-gold opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+              <span className="ml-auto text-cyan opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
             </a>
           ))}
         </motion.div>
@@ -356,9 +359,9 @@ export function Footer() {
           DESIGNED & BUILT BY {profile.name.toUpperCase()} — REACT THREE FIBER · GLSL · {new Date().getFullYear()}
         </p>
         <div className="flex gap-6">
-          <a href={profile.github} target="_blank" rel="noreferrer" className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-gold transition-colors">GH</a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-gold transition-colors">IN</a>
-          <a href={`mailto:${profile.email}`} className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-gold transition-colors">@</a>
+          <a href={profile.github} target="_blank" rel="noreferrer" className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-cyan transition-colors">GH</a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-cyan transition-colors">IN</a>
+          <a href={`mailto:${profile.email}`} className="font-body text-[11px] font-medium tracking-[0.2em] text-stone hover:text-cyan transition-colors">@</a>
         </div>
       </div>
     </footer>
